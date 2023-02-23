@@ -1,0 +1,73 @@
+<div >
+    <br>
+    <h4> {{uTitle}}</h4>
+</div>
+
+<ng-container *ngIf="dataSource">
+    <div class="container-fluid d-flex justify-content-center mt-4">
+      <table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+        <!-- ID column -->
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>Id.</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+  
+        <!-- Title column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+  
+        <!-- Release Year column -->
+        <ng-container matColumnDef="family">
+          <th mat-header-cell *matHeaderCellDef>Family</th>
+          <td mat-cell *matCellDef="let element">{{ element.family }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef>Email</th>
+          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef>Phone</th>
+          <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef>Address</th>
+          <td mat-cell *matCellDef="let element">{{ element.address }}</td>
+        </ng-container>
+  
+        <!-- Edit column -->
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef>Edit</th>
+          <td mat-cell *matCellDef="let element">
+            <span
+              class="material-icons"
+              style="cursor: pointer; color: #e19858"
+            >
+              edit
+            </span>
+          </td>
+        </ng-container>
+  
+        <!-- Delete column -->
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef>Delete</th>
+          <td mat-cell *matCellDef="let element">
+            <span
+              class="material-icons"
+              style="cursor: pointer; color: rgb(201, 61, 61)"
+            >
+              delete
+            </span>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </ng-container>
+  

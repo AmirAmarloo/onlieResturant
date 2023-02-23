@@ -1,0 +1,35 @@
+<div class="container mt-3 customerdiv" >
+    <div class="card">
+        <h4 class="card-header"> Register user</h4>
+        <div class="card-body">
+            <form [formGroup]="tsForm" (ngSubmit)="onSubmit()">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <p>Type</p>
+                            <select class="form-control" #takeawayList formControlName="description">
+                                <option *ngFor="let ts of dataSource"  (click)="findId(ts.description)" >
+                                    {{ ts.description }} {{ts.price}}
+                                </option>
+                            </select>                
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="qty"> qty </label>
+                                <input type="text" class="form-control" formControlName="qty" id="qty">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">
+                    Ok
+                </button>
+                <button (click)="discardClick()" class="btn btn-primary mr-2">
+                    Cancel
+                </button>
+
+            </form>
+        </div>
+    </div>
+
+</div>

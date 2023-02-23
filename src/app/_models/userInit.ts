@@ -1,0 +1,1 @@
+export let userCat: number = 1;   

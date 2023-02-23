@@ -1,0 +1,11 @@
+<nav>
+    <br>
+    <a *ngIf="detNo > 3" class="ank" routerLink="/foods">foods</a>
+    <a *ngIf="detNo > 4" class="ank" routerLink="/users">users</a>
+    <a *ngIf="detNo > 3" class="ank" routerLink="/takeawaystuff">Takeaway stuff</a>
+    <a class="ank" routerLink="/login">Login</a>
+    <a *ngIf="detNo > 3" class="ank" routerLink="/ingredients">Ingredients</a>
+    <a *ngIf="detNo > -1" class="ank" routerLink="/order">Orders</a>
+    <a *ngIf="detNo > 1" class="ank" routerLink="/changeOrderToReady">Set orders to ready</a>
+</nav>
+<router-outlet></router-outlet>

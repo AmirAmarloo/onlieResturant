@@ -1,0 +1,115 @@
+<div class="contaner mt-3">
+    <div class="row">
+        <div class="col-8">
+
+            <div class="card ml-5">
+                <h4 class="card-header" #titleIng> Foods </h4>
+                <div class="card-body">
+                    <form [formGroup]="foodForm" (ngSubmit)="onSubmit()">
+        
+                        <div class="form-group">
+                            <label for="foodName"> Food Name </label>
+                            <input type="text" class="form-control" #foodname formControlName="name" id="foodName">
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="foodprice"> Price </label>
+                            <input type="text" class="form-control" #foodprice formControlName="price" id="foodprice">
+                        </div>
+        
+                        <div class="form-group">
+                            <label for="foodDesc"> Decription </label>
+                            <input type="text" class="form-control" #foodDesc formControlName="description" id="foodDesc">
+                        </div>
+        
+                        <div class="form-group">
+                            <p>Category</p>
+                            <select class="form-control" #foodCategory formControlName="category">
+                                <option value=""></option>
+                                <option *ngFor="let foodCategory of foodCat" [ngValue]="foodCategory">
+                                    {{ foodCategory }}
+                                </option>
+                            </select>                
+                        </div>
+        
+                        <button type="submit" class="btn btn-primary mr-2">
+                            Save
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="contaner mt-3">
+    <div class="row">
+        <div class="col-8">
+
+            <table mat-table [dataSource]="dataSource" class="mymat mat-elevation-z8">
+                 
+                <ng-container matColumnDef="name" >
+                    <th mat-header-cell *matHeaderCellDef> Name. </th>
+                    <td mat-cell *matCellDef="let element" > {{element.name}} </td>
+                </ng-container>        
+                <ng-container matColumnDef="price">
+                    <th mat-header-cell *matHeaderCellDef> Price. </th>
+                    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+                </ng-container>        
+                <ng-container matColumnDef="description">
+                    <th mat-header-cell *matHeaderCellDef> Description. </th>
+                    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                </ng-container>        
+                <ng-container matColumnDef="category">
+                    <th mat-header-cell *matHeaderCellDef> Category. </th>
+                    <td mat-cell *matCellDef="let element"> {{foodCat[element.category-1]}} </td>
+                </ng-container>           
+                <ng-container matColumnDef="edit">
+                    <th mat-header-cell *matHeaderCellDef>Edit</th>
+                    <td mat-cell *matCellDef="let element">
+                      <span
+                        class="material-icons"
+                        style="cursor: pointer"
+                        (click)="editClick(element, titleIng)"
+                      >
+                        edit
+                      </span>
+                      
+                    </td>
+                  </ng-container>
+                <ng-container matColumnDef="delete">
+                    <th mat-header-cell *matHeaderCellDef>Delete</th>
+                    <td mat-cell *matCellDef="let element">
+                      <span
+                        class="material-icons"
+                        style="cursor: pointer"
+                        (click)="openDeleteDialog(element)"
+            
+                      >
+                        delete
+                      </span>
+                      
+                    </td>
+                  </ng-container>
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>        
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- 
+<input type="text"
+       cdkOverlayOrigin
+       #originOverlay="cdkOverlayOrigin"
+       (focus)="isOpen = true"
+       (blur)="isOpen = false"
+/>
+
+<ng-template cdkConnectedOverlay
+             [cdkConnectedOverlayOrigin]="originOverlay"
+             [cdkConnectedOverlayOpen]="isOpen"
+>
+  <div>This is my tooltip</div>
+</ng-template>
+   -->

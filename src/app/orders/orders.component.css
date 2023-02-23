@@ -1,0 +1,63 @@
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
+
+.openModal:after {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  content: '';
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.demo-section + .demo-section {
+  margin-top: 16px;
+}
+
+.sohppingcart{
+  transform: scale(2);
+}
+
+.totalprice{
+  text-decoration: solid;
+  font-weight: bolder;
+}
+
+.checkout{
+  color: white;
+  font-size: large;
+  font-weight: bolder;
+}
+
+.mymat, .mymatc, .mymatcheck, .tsdiv{
+  width: 90vh;
+  border-radius: 10px;
+}
+
+.mymatc{
+  line-height: 8vh;
+  color: white;
+}
+
+.mymatcheck :hover{
+  transition: 1s;
+  background-color: rgb(163, 221, 192);
+  color: white ;
+}
+
+

@@ -1,0 +1,62 @@
+<div class="contaner mt-3">
+    <div class="card">
+        <h4 class="card-header"> Ingredients </h4>
+        <div class="card-body">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+                <div class="form-group">
+                    <button class="form-control" (click)="foodPickup()"  id="pickFoodBtn">Pick food</button>
+                    <input type="text" class="form-control" #pickFood formControlName="foodId" id="foodId" style="display: none;">
+                    <input type="text" class="form-control" #pickFoodname readonly>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="materialName"> Ingredient Name </label>
+                    <input type="text" class="form-control" #matname formControlName="materialName" id="materialName">
+                </div>
+
+                <div class="form-group">
+                    <label for="amount"> Amount </label>
+                    <input type="text" class="form-control" #amountel formControlName="amount" id="amount">
+                </div>
+
+                <div class="form-group">
+                    <p>Unit</p>
+                    <select class="form-control" #unit formControlName="unit">
+                        <option value=""></option>
+                        <option *ngFor="let unit of Units" [ngValue]="unit">
+                            {{ unit }}
+                        </option>
+                    </select>                
+                </div>
+
+                <div class="form-group">
+                    <label for="price"> Price </label>
+                    <input type="text" class="form-control" #priceel formControlName="price" id="price">
+                </div>
+
+                <button type="submit" class="btn btn-primary mr-2">
+                    Save
+                </button>
+
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+<ng-template #tpl>
+    <div class="modal-card">
+    <header class="modal-card-head">
+      …
+    </header>
+    <section class="modal-card-body">
+      …
+    </section>
+    <footer class="modal-card-foot">
+      …
+    </footer>
+   </div>
+  </ng-template>

@@ -1,0 +1,23 @@
+th.mat-header-cell,
+td.mat-cell{
+    /* padding: 0 30px; */
+    text-align: center;
+    width: 20px;
+}
+
+.mymat {
+    width: 50%;
+    margin: 30px;
+  }
+
+
+  .mat-row:hover > .mat-cell {
+    color:  #c7969694;
+  }
+
+
+tr:hover{
+  cursor: pointer;
+  background: #b4b4b433;
+}
+

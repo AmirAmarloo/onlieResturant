@@ -1,0 +1,39 @@
+<ng-container *ngIf="data" class="ngcont">
+    <div class="container  mt-3">
+        <div class="row">
+            <div class="col-8">
+                <h4 class="card-header" #titleIng> {{data.order.name}} {{data.order.price}}</h4>
+                <div class="card-body">
+                    <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="qty"> Qty </label>
+                                    <input type="number" class="form-control" #qty formControlName="qty" id="qty" min="0" max="1000" value="6" size="6" >
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="description"> Decription </label>
+                                    <input type="text" class="form-control" #description formControlName="description" id="description" style="width: 250px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <button type="submit" class="btn btn-primary mr-2">
+                                    Add
+                                </button>
+                            </div>
+                            <div class="col-6">
+                                <button type="button" class="btn btn-primary" (click)="close()">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

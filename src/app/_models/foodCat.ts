@@ -1,0 +1,1 @@
+export let FoodCat : string[] = ['Food', 'Pizza', 'Drink'];

@@ -1,0 +1,17 @@
+<ng-container *ngIf="data">
+    <div class="container m-2" >
+
+        <h2>Are you sure you want to delete {{ data.order.id }}?</h2>
+      
+        <button type="button" class="btn btn-danger mr-2" (click)="yes()">
+          Delete
+        </button>
+        <button type="button" class="btn btn-primary" (click)="close()">
+          Cancel
+        </button>
+        <br>
+        <br>
+
+    </div>
+</ng-container>
+  

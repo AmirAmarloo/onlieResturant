@@ -1,0 +1,43 @@
+<ng-container *ngIf="data">
+    <div class="container maindiv" >
+
+        <div class="container mt-3 divsuborder">
+            <div class="row shadow-sm p-3 mb-5 bg-white rounded " *ngFor="let i of data.orderShow">
+                <div class="col-3 divsuborderrow">
+                    <p>{{i.name}}</p>
+                </div>
+                <div class="col-4 divsuborderrow">
+                    <p>{{i.description}}</p>
+                </div>
+                <div class="col-2 divsuborderrow">
+                    <p>{{i.qty}}</p>
+                </div>
+                <div class="col-2 divsuborderrow">
+                    <p>({{i.qty}}*{{i.price}}) {{i.qty*i.price}} HUF</p>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <div class="container summery">
+            <p> Tax Amount : {{taxAmount}} HUF</p>
+            <p> Gross Amount : {{grossAmount}} HUF</p>
+            <div *ngIf="hasTakeaway">
+                <p > Takeaway Amount : {{takeawayTprice}} HUF</p>
+            </div>
+            <h2> Total Amount : {{netAmount}} HUF</h2>
+        </div>
+        <hr>
+        <h3>Are you sure you want to submit the order?</h3>
+        <button type="button" class="btn btn-info mr-2" (click)="yes()">
+          Submit
+        </button>
+        <button type="button" class="btn btn-primary" (click)="close()">
+          Cancel
+        </button>
+        <br>
+        <br>
+
+    </div>
+</ng-container>
+  

@@ -1,0 +1,36 @@
+<div class="container mt-3">
+    <div class="card">
+        <h4 class="card-header">Login</h4>
+        <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="email">Username</label>
+                    <input type="text" class="form-control" formControlName="email" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" formControlName="password" id="password">
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">
+                    Login
+                </button>
+                <br>
+                <br>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <p class="CanLogin"> {{canLogin}} </p> 
+                        </div>
+                        <div class="col">
+                            <a routerLink="/resetpassword" class="Forget">Forget password?</a>   
+                        </div>
+                    </div>
+                </div>
+                <a routerLink="/register" class="btn btn-success mr-2">Registe Now</a>
+                
+                
+
+            </form>
+        </div>
+    </div>
+</div>

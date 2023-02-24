@@ -37,62 +37,34 @@ export class LoginComponent {
 
   onSubmit(){
     console.log(this.loginForm.value);
-    let res : Users;
     let innerUserCat: number = -1;
+    let token: string = '';
+    let id: number;
     this.us.loginUser(this.loginForm.value).subscribe({
       next: (data) => { 
-         res = data;
-        
-        console.log('result: ', data);
-        // console.log('data: ', data);
-        //   for (let i of data){
-          //     console.log('sssssss : ', i);
-          //  }
-          console.log('test........')
-          
+         innerUserCat = data.category;
+         token = data.token;
+         id = data.id;
         },
-        complete: () => {let mn:string = 'name';
-                       console.log('res: ', res)
-                       console.log('res.name: ', res.name);
-                       let aaa = JSON.stringify(res);
-                       console.log('length: ' , aaa.length)
-                       if (aaa.length > 190){
-                         console.log(aaa);
-                         console.log('name: ',  aaa.substring(aaa.indexOf('name')+5, aaa.indexOf(',"id":')-1).replace(`"`, '').replace(':', ''));
-                         console.log('family: ',  aaa.substring(aaa.indexOf('family')+7, aaa.indexOf('category')-3).replace(`"`, '').replace(':', ''));
-                         console.log('status: ',  aaa.substring(aaa.indexOf('"status":')+10, aaa.indexOf(',"token":')-3).replace(`"`, '').replace(':', ''));
-                         console.log('category: ',  aaa.substring(aaa.indexOf('"category":')+12, aaa.indexOf(',"email"')-3).replace(`"`, '').replace(':', ''));
-                         console.log('email: ',  aaa.substring(aaa.indexOf('"email":')+9, aaa.indexOf(',"status"')).replace(`"`, '').replace(':', ''));
-                         //{t: 'e7af3224-9685-11ed-8eb6-98fa9b778764'}
-                         let token = aaa.substring(aaa.indexOf('"token":')+9, aaa.indexOf('}]')).replace(`"`, '').replace(':', '')
-                         
-                         console.log('token: ',  aaa.substring(aaa.indexOf('"token":')+9, aaa.indexOf('}]')).replace(`"`, '').replace(':', ''));
-                         innerUserCat = parseInt(aaa.substring(aaa.indexOf('"category":')+12, aaa.indexOf(',"email"')-3).replace(`"`, '').replace(':', ''));
-                         console.log('innerCategory: ' + innerUserCat);
-                       //  this.route.config[0] = {path: 'login', component: LoginComponent}
-                         console.log(this.route.config)
-                         this.canLogin = ''
-                         let decToken = this.getDecodedAccessToken(token);                         
-                         console.log('Category:', decToken.category)
-                         this.sendMessage(decToken.category);
-                         localStorage.setItem('user-level', decToken.category);
-                         localStorage.setItem('userId', aaa.substring(aaa.indexOf('"id":')+5, aaa.indexOf(',"family":')).replace(`"`, '').replace(':', ''));
-                       }
-                       else
-                       {
-                        localStorage.setItem('user-level', '0');
-                        this.sendMessage('0');
-                        this.canLogin = 'Invalid username or password';
-                       }
-                      },
+      complete: () => {
+          if (id){
+            this.canLogin = ''
+            let decToken = this.getDecodedAccessToken(token);                         
+            this.sendMessage(decToken.category);
+            localStorage.setItem('user-level', decToken.category);
+            localStorage.setItem('userId', id.toString());
+          }
+          else
+          {
+            localStorage.setItem('user-level', '0');
+            this.sendMessage('0');
+            this.canLogin = 'Invalid username or password';
+            localStorage.removeItem('user-level');
+            localStorage.removeItem('userId');
+          }
+        },
       error: (err) => {console.log(err)}
     })
-    console.log('After service calling.');
-
-    // if (innerUserCat === 5){
-      console.log(this.route.config[0])
-    // }
-        
   }
 
   getDecodedAccessToken(token: string) {

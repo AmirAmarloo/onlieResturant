@@ -15,7 +15,50 @@ td.mat-cell{
     color:  #c7969694;
   }
 
-
+  table {
+    width: 100%;
+    background-color: rgb(235, 235, 235);
+  }
+  th , td {
+      color: darkblue!important;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  th.mat-header-cell,
+  td.mat-cell{
+      /* padding: 0 30px; */
+      text-align: center;
+      width: 20px;
+  }
+  
+  .mymat {
+      width: 50%;
+      margin: 30px;
+    }
+  
+  
+    /* .mat-row:hover > .mat-cell {
+      color:  #c7969694;
+    } */
+  
+  
+  tr:hover{
+    cursor: pointer;
+    background: #d0bab633;
+  }
+  
+  
+  .rowrow{
+    background-color: rgb(167, 167, 129);
+  }
+  
+  .material-icons :hover{
+    color: red;
+  }
 tr:hover{
   cursor: pointer;
   background: #b4b4b433;

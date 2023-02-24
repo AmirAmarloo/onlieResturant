@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatTable } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { FoodsService } from '../services/foods.service';
 import { Foods } from '../_models/foods';
 import Swal from 'sweetalert2';
@@ -8,6 +8,9 @@ import { DeleteFoodDialogComponent, DialogData } from '../_dialog/delete-food-di
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { FoodCat } from '../_models/foodCat';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort, Sort } from '@angular/material/sort';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 @Component({
   selector: 'app-foods',
@@ -21,18 +24,27 @@ export class FoodsComponent {
   @ViewChild('foodname') foodname! : ElementRef;
   @ViewChild('foodPrice') foodprice! : ElementRef;
   @ViewChild('foodCategory') foodCategory! : ElementRef;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
 
   foodForm! : FormGroup;
   foodCat =  FoodCat; //string[] = ['Food', 'Pizza', 'Drink'];
   public displayedColumns : string[] = ['name', 'price', 'description', 'category', 'edit', 'delete'];
-  public dataSource! : Foods[];
+  public dataSource!: MatTableDataSource<Foods>;
+  public jp!: MatPaginator;
+  // public dataSource! : Foods[];
   public allFoods!: Foods[];
   public doEdit: Boolean = false;
 
   constructor(private fb: FormBuilder, 
               private _fs : FoodsService, 
               private _dialog: MatDialog,
-              private route: Router){}
+              private route: Router,
+              private _liveAnnouncer: LiveAnnouncer,
+              ){}
+
+
 
   ngOnInit(): void {
     const Role = Number(localStorage.getItem('user-level'))
@@ -44,6 +56,29 @@ export class FoodsComponent {
 
     this.createForm();
     this.getAllFoods();
+  }
+
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  /** Announce the change in sort state for assistive technology. */
+  announceSortChange(sortState: Sort) {
+    // This example uses English messages. If your application supports
+    // multiple language, you would internationalize these strings.
+    // Furthermore, you can customize the message to add additional
+    // details about the values being sorted.
+    if (sortState.direction) {
+      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+    } else {
+      this._liveAnnouncer.announce('Sorting cleared');
+    }
   }
 
   createForm(){
@@ -133,7 +168,11 @@ export class FoodsComponent {
     this._fs.getAllFoods().subscribe({
       next: (data) => {
         this.allFoods = data;
-        this.dataSource = data;
+      },
+      complete: () => {
+        this.dataSource = new MatTableDataSource(this.allFoods);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       },
       error: (er) => {
         console.log(er);

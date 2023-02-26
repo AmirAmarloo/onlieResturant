@@ -4,9 +4,23 @@
 /**************
     MAIN
 **************/
-html, body { 
+html, 
+body { 
     height: 100%;
     margin: 0;
     padding: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
  }
+
+/**************
+    HEADER
+**************/
+
+header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)),
+      url('src/assets/images/header01.webp');
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+  }
+  

@@ -37,6 +37,7 @@ import { OrderReadyComponent } from './ChangeStatus/order-ready/order-ready.comp
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {A11yModule} from '@angular/cdk/a11y';
+import { DeleteUserDialogComponent } from './_dialog/delete-user-dialog/delete-user-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +63,7 @@ import {A11yModule} from '@angular/cdk/a11y';
     SubmitOrderComponent,
     PickTakewayStuffComponent,
     OrderReadyComponent,
+    DeleteUserDialogComponent,
   ],
   imports: [
     BrowserModule,

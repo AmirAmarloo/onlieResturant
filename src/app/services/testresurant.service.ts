@@ -27,6 +27,15 @@ export class TestresurantService {
     return this._http.post<Users>(`${this.apiURL}/addNewUser`, data, httpOption);
   }
 
+  updateUser(data: Users): Observable<Users>{
+    console.log('in user update service')
+    return this._http.post<Users>(`${this.apiURL}/updateUser`, data, httpOption);
+  } 
+
+  deleteUsers(data: Users): Observable<Users>{
+    return this._http.post<Users>(`${this.apiURL}/deleteUser`, data, httpOption);
+  }
+
   loginUser(data: LoginUser) : Observable<Users> {
     // gethttpOption.headers.append('email', data.username);
     // gethttpOption.headers.append('password', data.password);

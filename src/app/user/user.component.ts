@@ -29,6 +29,7 @@ export class UserComponent {
   users?: Users[];
   userForm!: FormGroup;
   userCat = UserCat; // string[] = ['customer', 'kitchenUser', 'kitchenDirector', 'supervisor', 'manager', 'admin'];
+  catNumber!: number | string;
   public doEdit: Boolean = false;
   public dataSource = new MatTableDataSource<Users>;
 
@@ -39,6 +40,7 @@ export class UserComponent {
     'email',
     'phone',
     'address',
+    'category',
     'edit',
     'delete'
   ];
@@ -63,11 +65,17 @@ export class UserComponent {
     this.getUsers();
   }
 
+
   getUsers() : void{
     this._us.getUsers().subscribe({
       next:  (data) => {
         this.users = data;
         this.dataSource.data = data;
+        // if(this.dataSource.data.find(x => x.category == 0)){
+        //   this.catName = "admin";
+        // }
+        console.log(this.dataSource.data);
+        console.log("Target cat: ",this.dataSource.data.find(x => x.category == 5)?.category);
                         },
       complete : () => {this.uTitle = 'User data table'},
       error: (err) => {this.uTitle = err}

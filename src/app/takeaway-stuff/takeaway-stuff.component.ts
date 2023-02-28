@@ -31,12 +31,12 @@ export class TakeawayStuffComponent {
               private route: Router){}
 
   ngOnInit(): void {
-    const Role = Number(localStorage.getItem('user-level'))
-    console.log(Role);
-    if(Role < 3){
-      this.route.navigate(["/login"]);
-      return;
-    }
+    // const Role = Number(localStorage.getItem('user-level'))
+    // console.log(Role);
+    // if(Role < 3){
+    //   this.route.navigate(["/login"]);
+    //   return;
+    // }
 
     this.createForm();
     this.getAllTakeawayStuff();
@@ -62,14 +62,11 @@ export class TakeawayStuffComponent {
       return;
     }
    
-    console.log('doEdit: ', this.doEdit);
     if (this.doEdit===true){
-      console.log('true condition')
       this.editTws();
     }
     else
     {
-      console.log('false condition')
       this.appendTws();
       this.doEdit = false;
 

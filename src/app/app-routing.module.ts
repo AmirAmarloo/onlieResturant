@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core';
 // import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, ROUTES, Routes } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 // import { AppComponent } from './app.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { OrderReadyComponent } from './ChangeStatus/order-ready/order-ready.component';
@@ -17,43 +18,47 @@ import { UserComponent } from './user/user.component';
 const routes: Routes = [
   {
     path: 'foods',
-    component: FoodsComponent,
+    component: FoodsComponent, canActivate:[AuthGuard]
   },
   {
     path: 'users',
-    component: UserComponent,
+    component: UserComponent, canActivate:[AuthGuard]
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent, 
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent, 
   },
   {
     path: 'ingredients',
-    component: IngredientComponent
+    component: IngredientComponent, canActivate:[AuthGuard]
   },
   {
     path: 'resetpassword',
-    component: ResetPasswordComponent
+    component: ResetPasswordComponent, 
   },
   {
     path: 'changepassword',
-    component: ChangePasswordComponent
+    component: ChangePasswordComponent, 
   },          
   {
     path: 'takeawaystuff',
-    component: TakeawayStuffComponent
+    component: TakeawayStuffComponent, canActivate:[AuthGuard]
   },          
   {
     path: 'order',
-    component: OrdersComponent
+    component: OrdersComponent, 
+  },          
+  {
+    path: '',
+    component: OrdersComponent, 
   },          
   {
     path: 'changeOrderToReady',
-    component: OrderReadyComponent
+    component: OrderReadyComponent, canActivate:[AuthGuard]
   },          
 
 ];

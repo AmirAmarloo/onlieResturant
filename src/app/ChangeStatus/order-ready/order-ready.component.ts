@@ -12,6 +12,8 @@ export class OrderReadyComponent {
   orderList! : Orders[];
   tmpOrder!: Orders;
   orderGroup: number[] = [];
+  tmpTest!: number;
+  testHt: string = '<h2> test </h2>'
 
   constructor(private _os: OrdersService){}
 
@@ -23,23 +25,21 @@ export class OrderReadyComponent {
 
   getOrders(){
     const tmp = this.tmpOrder || {}
-    let totalOrders: Orders[] = new Array(this.orderList.length-1);
+    // let totalOrders: Orders[] = new Array(this.orderList.length-1);
     tmp.status = 0;
+    let lastOg = -1;
     this._os.getOrdersByStatus(tmp).subscribe({
       next: (data) => {
         this.orderList = data;
         console.log(this.orderList)},
       complete: () => {
-        let lastOg: number = -1;
-        let aRow = -1;
         for (let i = 0; i < this.orderList.length; i++){
           if (this.orderList[i].orderGroup != lastOg){
-            aRow++;
+            this.orderGroup.push(this.orderList[i].orderGroup);
             lastOg = this.orderList[i].orderGroup;
           }
-          totalOrders.push(this.orderList[i]);
         }
-        console.log(totalOrders);
+        console.log(this.orderGroup);
       },
       error: (err) => {console.log(err)}
     })

@@ -28,10 +28,7 @@ export class TestresurantService {
   }
 
   loginUser(data: LoginUser) : Observable<Users> {
-    // gethttpOption.headers.append('email', data.username);
-    // gethttpOption.headers.append('password', data.password);
     return this._http.post<Users>(`${this.apiURL}/loginUser`, data, httpOption);
-    // return this._http.post<Users>(`${this.apiURL}/loginUser?email=${data.username}&password=${data.password}`,  httpOption);
   }
 
   resetpassword(email: string): Observable<boolean>{
@@ -41,5 +38,9 @@ export class TestresurantService {
   effectChangePassword(chageData: {email:string, password:string, token:string}){
     console.log('passed token to service: ', chageData.token)
     return this._http.post<Users>(`${this.apiURL}/resetPasswordLink`, chageData, httpOption);
+  }
+
+  isLogin(){
+    return !!localStorage.getItem('token');
   }
 }

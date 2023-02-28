@@ -33,7 +33,6 @@ export class FoodsComponent {
   public displayedColumns : string[] = ['name', 'price', 'description', 'category', 'edit', 'delete'];
   public dataSource!: MatTableDataSource<Foods>;
   public jp!: MatPaginator;
-  // public dataSource! : Foods[];
   public allFoods!: Foods[];
   public doEdit: Boolean = false;
 
@@ -47,12 +46,12 @@ export class FoodsComponent {
 
 
   ngOnInit(): void {
-    const Role = Number(localStorage.getItem('user-level'))
-    console.log(Role);
-    if(Role < 2){
-      this.route.navigate(["/login"]);
-      return;
-    }
+    // const Role = Number(localStorage.getItem('user-level'))
+    // console.log(Role);
+    // if(Role < 2){
+    //   this.route.navigate(["/login"]);
+    //   return;
+    // }
 
     this.createForm();
     this.getAllFoods();
@@ -68,12 +67,7 @@ export class FoodsComponent {
     }
   }
 
-  /** Announce the change in sort state for assistive technology. */
   announceSortChange(sortState: Sort) {
-    // This example uses English messages. If your application supports
-    // multiple language, you would internationalize these strings.
-    // Furthermore, you can customize the message to add additional
-    // details about the values being sorted.
     if (sortState.direction) {
       this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
     } else {

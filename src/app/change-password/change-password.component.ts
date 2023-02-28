@@ -35,8 +35,6 @@ export class ChangePasswordComponent {
   }
 
   onSubmit(){
-    // this.us.resetpassword()
-    // console.log(this.route.snapshot.paramMap.get('t'))
     if (this.resetPasswordForm.value.passwordFirst != 
         this.resetPasswordForm.value.passwordSecond){
         alert('Not same!');
@@ -45,20 +43,14 @@ export class ChangePasswordComponent {
     let stringObj: string;
     this.route.queryParams
       .subscribe(params => {
-        console.log(params);
         stringObj = JSON.stringify(params);
         this.token = stringObj.substring(stringObj.indexOf('{"t":')+6, stringObj.indexOf('"email')).replace(`"`, '').replace(`,`, '')
         this.email = stringObj.substring(stringObj.indexOf('"email":')+9, stringObj.indexOf('"}')).replace(`"`, '')
-        console.log('total:' , stringObj);
-        console.log('tooked token: ', this.token);
-        console.log('tooked email', this.email);
         console.log(this.resetPasswordForm.value.passwordFirst);
-        let givenToken = localStorage.getItem('login-token');
+        let givenToken = localStorage.getItem('token');
         if (givenToken){
           this.getDecodedAccessToken(givenToken);
         }
-        // this.orderby = params;
-        //console.log(this.orderby); // price
       }
     ); 
     if (this.email && this.resetPasswordForm.value.passwordFirst && this.token){

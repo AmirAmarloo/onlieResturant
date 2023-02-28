@@ -31,11 +31,11 @@ export class IngredientComponent {
   
   ngOnInit(): void {
     this.createForm();
-    const Role = Number(localStorage.getItem('user-level'))
-    if(Role < 1){
-      this.route.navigate(["/login"]);
-      return;
-    }
+    // const Role = Number(localStorage.getItem('user-level'))
+    // if(Role < 1){
+    //   this.route.navigate(["/login"]);
+    //   return;
+    // }
   }
 
 
@@ -94,22 +94,6 @@ export class IngredientComponent {
 
     this._uService.addIngredient(this.registerForm.value).subscribe({
       next: () => {
-        // this.registerForm.reset();
-        // this.registerForm.controls['materialName'].removeValidators(Validators.required);
-        // this.registerForm.controls['materialName'].updateValueAndValidity();
-        // this.registerForm.controls['materialName'].addValidators(Validators.required);        
-        
-        // this.registerForm.controls['amount'].removeValidators(Validators.required);
-        // this.registerForm.controls['amount'].updateValueAndValidity();
-        // this.registerForm.controls['amount'].addValidators(Validators.required);        
-
-        // this.registerForm.controls['unit'].removeValidators(Validators.required);
-        // this.registerForm.controls['unit'].updateValueAndValidity();
-        // this.registerForm.controls['unit'].addValidators(Validators.required);        
-
-        // this.registerForm.controls['price'].removeValidators(Validators.required);
-        // this.registerForm.controls['price'].updateValueAndValidity();
-        // this.registerForm.controls['price'].addValidators(Validators.required);        
 
       },
       complete : () => {console.log('Ingredient added.')

@@ -1,8 +1,11 @@
 <div class="container">
-    <div class="card" *ngFor="let i of orderList">
-        <div class="col orderstat"   >
-            <p>{{i.name}}</p>
-            <p>{{i.qty}}</p>
+    <!-- <div *ngFor="let og of orderGroup"> -->
+        <div class="card" *ngFor="let i of orderList" >
+            <div class="col orderstat"  >
+                <p #{{i.orderGroup}}>Name: {{i.name}}</p>
+                <p>Qty: {{i.qty}}</p>
+                <p>Order group: {{i.orderGroup}}</p>
+            </div>
         </div>
-    </div>
+    <!-- </div> -->
 </div>

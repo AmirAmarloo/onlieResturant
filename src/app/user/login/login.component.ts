@@ -1,10 +1,9 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { DemoServiceService } from 'src/app/demo-service.service';
 import { TestresurantService } from 'src/app/services/testresurant.service';
-import { Users } from 'src/app/_models/users';
 
 @Component({
   selector: 'app-login',
@@ -15,9 +14,6 @@ export class LoginComponent {
 
   loginForm! : FormGroup;
   canLogin: string = '';
-  // @ViewChild(AppComponent, 'inger') amountEl! : ElementRef;
-  // private footerElementRef!: ElementRef;
-  // private child!: ElementRef;
   
   constructor(private fb: FormBuilder, 
               private route: Router, 
@@ -42,25 +38,23 @@ export class LoginComponent {
     let id: number;
     this.us.loginUser(this.loginForm.value).subscribe({
       next: (data) => { 
-         innerUserCat = data.category;
-         token = data.token;
-         id = data.id;
+        console.log('data: ', data);  
+        innerUserCat = data.category;
+        token = data.token;
+        id = data.id;
         },
       complete: () => {
           if (id){
             this.canLogin = ''
             let decToken = this.getDecodedAccessToken(token);                         
             this.sendMessage(decToken.category);
-            localStorage.setItem('user-level', decToken.category);
-            localStorage.setItem('userId', id.toString());
+            localStorage.setItem('token', token);
           }
           else
           {
-            localStorage.setItem('user-level', '0');
             this.sendMessage('0');
             this.canLogin = 'Invalid username or password';
-            localStorage.removeItem('user-level');
-            localStorage.removeItem('userId');
+            localStorage.removeItem('token');
           }
         },
       error: (err) => {console.log(err)}
@@ -69,12 +63,18 @@ export class LoginComponent {
 
   getDecodedAccessToken(token: string) {
     const helper = new JwtHelperService();
-    console.log('Ex date: ', helper.getTokenExpirationDate(token))
+    console.log('Ex date: ', helper.getTokenExpirationDate(token));
+
+    console.log(helper.decodeToken(token));
     return  helper.decodeToken(token);
   }
 
   sendMessage(msg: string): void {
     this.readNo.sendUpdate(msg);
+}
+
+testClick(){
+  console.log(localStorage.getItem('token'));
 }
 
 }

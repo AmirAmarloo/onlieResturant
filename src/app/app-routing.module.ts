@@ -1,19 +1,16 @@
-// import { HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-// import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, ROUTES, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
-// import { AppComponent } from './app.component';
-import { ChangePasswordComponent } from './change-password/change-password.component';
-import { OrderReadyComponent } from './ChangeStatus/order-ready/order-ready.component';
-import { FoodsComponent } from './foods/foods.component';
-import { IngredientComponent } from './ingredient/ingredient.component';
-import { OrdersComponent } from './orders/orders.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { TakeawayStuffComponent } from './takeaway-stuff/takeaway-stuff.component';
-import { LoginComponent } from './user/login/login.component';
-import { RegisterComponent } from './user/register/register.component';
-import { UserComponent } from './user/user.component';
+import { ChangePasswordComponent } from './components/user/change-password/change-password.component';
+import { OrderReadyComponent } from './components/changeStatus/order-ready/order-ready.component';
+import { FoodsComponent } from './components/_crud/foods/foods.component';
+import { IngredientComponent } from './components/_crud/ingredient/ingredient.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { ResetPasswordComponent } from './components/user/reset-password/reset-password.component';
+import { TakeawayStuffComponent } from './components/_crud/takeaway-stuff/takeaway-stuff.component';
+import { LoginComponent } from './components/user/login/login.component';
+import { RegisterComponent } from './components/user/register/register.component';
+import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
   {

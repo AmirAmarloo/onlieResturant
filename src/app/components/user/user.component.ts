@@ -90,10 +90,10 @@ export class UserComponent {
       name: ['', Validators.required],
       family: ['', Validators.required],
       email: ['', Validators.required],
-      phone: ['', Validators.required],
       address: ['', Validators.required],
-      status: [0, Validators.required],
-      token: [0, Validators.required],
+      phone: ['', Validators.required],
+      // status: [0, Validators.required],
+      // token: [0, Validators.required],
       category: [0, Validators.required],
     })
   }

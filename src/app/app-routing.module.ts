@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, ROUTES, Routes } from '@angular/router';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './_helpers/auth.guard';
 import { ChangePasswordComponent } from './components/user/change-password/change-password.component';
 import { OrderReadyComponent } from './components/changeStatus/order-ready/order-ready.component';
 import { FoodsComponent } from './components/_crud/foods/foods.component';
@@ -11,6 +11,7 @@ import { TakeawayStuffComponent } from './components/_crud/takeaway-stuff/takeaw
 import { LoginComponent } from './components/user/login/login.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { UserComponent } from './components/user/user.component';
+import { OrderTakeawyComponent } from './components/order-takeawy/order-takeawy.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path: 'changeOrderToReady',
     component: OrderReadyComponent, canActivate:[AuthGuard]
+  },          
+  {
+    path: 'changeOrderToTakeaway',
+    component: OrderTakeawyComponent, canActivate:[AuthGuard]
   },          
 
 ];

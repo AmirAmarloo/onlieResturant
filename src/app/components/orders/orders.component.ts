@@ -68,10 +68,7 @@ export class OrdersComponent {
 
   getAllTakeawayStuff(){
     this._tss.getAllTakeawayStuff().subscribe({
-      next: (data) => {
-        this.tsDataSource = data;
-        console.log(this.tsDataSource);
-      }
+      next: (data) => {this.tsDataSource = data}
     })
   }
 
@@ -246,7 +243,7 @@ export class OrdersComponent {
     }
     this.clacTakeaway();
     let takeawayPrice = 0 ;
-
+    let hasError = false;
     if (this.takeaway.value.qty && this.takeaway.value.price){
       takeawayPrice = this.takeaway.value.qty * this.takeaway.value.price;
     }
@@ -261,9 +258,7 @@ export class OrdersComponent {
               let userid = Number(localStorage.getItem('userId'));
               e.userId = userid;
               this._os.addOrder(e).subscribe({
-                next: (data) => {
-                  console.log(data);
-                },
+                next: (data) => {},
                 complete: () => {
                   this._os.submitOrder(Number(localStorage.getItem('userId'))).subscribe({
                     next: (dta) => {
@@ -271,17 +266,23 @@ export class OrdersComponent {
                       this.submitTime = submitTimeStr.substring(submitTimeStr.indexOf('[{"result":"')+12, submitTimeStr.indexOf('"}]'));
                       this.takeaway.value.dateTime = this.submitTime;
                       this.addTakeaway();
-                      this._callSwal();
                       this.clearOrder();
                       },
-                    error: (err) => {console.log(err)}
+                    error: (err) => {
+                      console.log(err);
+                      hasError = true;
+                    }
                   })  
                 },
                 error: (err) => {
                   console.log(err);
+                  hasError = true;
                 }
               })
-            })            
+            })
+            if (!hasError){
+              this._callSwal();
+            }            
           }
         },
       });
@@ -303,7 +304,6 @@ export class OrdersComponent {
       }
     })
     this.tsId = id;
-    console.log(this.tsId);
   }
 
   onSearchChange(searchValue: any): void {  
@@ -312,6 +312,12 @@ export class OrdersComponent {
   }
 
   clacTakeaway(){
+    console.log(this.tsId);
+    if (this.tsId === -1){
+      this.takeaway.value.price = 0;
+      this.takeaway.value.qty = 0;
+      return;
+    }
     if (this.tsId || this.tsQty){
       let idx = -1
       this.tsDataSource.forEach((e, index)=>{
@@ -319,18 +325,16 @@ export class OrdersComponent {
           idx = index;
         }
       })
-      console.log(this.tsDataSource[idx]);
       this.takeaway.value.price = this.tsDataSource[idx].price;
       this.takeaway.value.qty = this.tsQty;
       this.takeaway.value.tsId = this.tsDataSource[idx].id;
       this.takeaway.value.userId = Number(localStorage.getItem('userId'));
-      console.log(this.takeaway.value);
     }
   }
 
   addTakeaway(){
     this._ts.addTakeaway(this.takeaway.value).subscribe({
-      next: (dta) => {console.log(dta)},
+      next: (dta) => {},
       error: (err) => {console.log('error takeaway; ', err)}
     });    
   }

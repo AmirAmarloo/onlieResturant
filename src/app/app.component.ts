@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { DemoServiceService } from './demo-service.service';
+import { messagingForAccessService } from './_services/massagingForAccess';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +12,7 @@ export class AppComponent implements OnInit {
   detNo : number = 0;
   private subscriptionName!: Subscription;
 
-   constructor(private readNo: DemoServiceService){
-   }
+   constructor(private readNo: messagingForAccessService){}
 
    ngOnInit(): void{
     this.subscriptionName= this.readNo.getUpdate().subscribe

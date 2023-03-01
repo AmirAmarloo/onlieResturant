@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { DemoServiceService } from 'src/app/demo-service.service';
+import { messagingForAccessService } from 'src/app/_services/massagingForAccess';
 import { userService } from 'src/app/_services/user.service';
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginComponent {
   constructor(private fb: FormBuilder, 
               private route: Router, 
               private us: userService,
-              private readNo: DemoServiceService){}
+              private readNo: messagingForAccessService){}
 
   ngOnInit(): void{
     this.createForm();

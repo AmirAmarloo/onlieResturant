@@ -74,8 +74,6 @@ export class UserComponent {
         // if(this.dataSource.data.find(x => x.category == 0)){
         //   this.catName = "admin";
         // }
-        console.log(this.dataSource.data);
-        console.log("Target cat: ",this.dataSource.data.find(x => x.category == 5)?.category);
                         },
       complete : () => {this.uTitle = 'User data table'},
       error: (err) => {this.uTitle = err}
@@ -92,10 +90,10 @@ export class UserComponent {
       name: ['', Validators.required],
       family: ['', Validators.required],
       email: ['', Validators.required],
-      phone: ['', Validators.required],
       address: ['', Validators.required],
-      status: [0, Validators.required],
-      token: [0, Validators.required],
+      phone: ['', Validators.required],
+      // status: [0, Validators.required],
+      // token: [0, Validators.required],
       category: [0, Validators.required],
     })
   }

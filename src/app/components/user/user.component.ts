@@ -74,8 +74,6 @@ export class UserComponent {
         // if(this.dataSource.data.find(x => x.category == 0)){
         //   this.catName = "admin";
         // }
-        console.log(this.dataSource.data);
-        console.log("Target cat: ",this.dataSource.data.find(x => x.category == 5)?.category);
                         },
       complete : () => {this.uTitle = 'User data table'},
       error: (err) => {this.uTitle = err}

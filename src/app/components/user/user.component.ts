@@ -173,7 +173,7 @@ export class UserComponent {
       next: (data) => {
       },
       complete: () => {console.log('User updated.')
-      this.comment = "User is updated!";
+      this.comment = "User is updated!  (" + this.userForm.value.name + " " + this.userForm.value.family + ")";
         this.userForm.reset();
         this.getUsers();
       this.doEdit = false},

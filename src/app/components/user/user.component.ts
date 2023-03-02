@@ -30,6 +30,8 @@ export class UserComponent {
   userForm!: FormGroup;
   userCat = UserCat; // string[] = ['customer', 'kitchenUser', 'kitchenDirector', 'supervisor', 'manager', 'admin'];
   catNumber!: number | string;
+  UserEditStyle!: string;
+  comment: string = "";
   public doEdit: Boolean = false;
   public dataSource = new MatTableDataSource<Users>;
 
@@ -153,12 +155,14 @@ export class UserComponent {
     if (this.doEdit===true){
       console.log('true condition')
       this.editUser();
+      // this.hideUserEdit();
     }
     else
     {
       console.log('false condition')
       this.appendUser();
       this.doEdit = false;
+  
 
     }
   }
@@ -169,6 +173,7 @@ export class UserComponent {
       next: (data) => {
       },
       complete: () => {console.log('User updated.')
+      this.comment = "User is updated!";
         this.userForm.reset();
         this.getUsers();
       this.doEdit = false},
@@ -206,6 +211,7 @@ export class UserComponent {
       category: [e.category, Validators.required],
     })
     el.scrollIntoView();
+    this.showUserEdit();
     this.doEdit = true;
   }
 
@@ -247,5 +253,11 @@ export class UserComponent {
       });
   }  
 
+  showUserEdit() {
+   this.UserEditStyle = 'edit-show';
+  }
+  hideUserEdit() {
+    this.UserEditStyle = 'edit-hide';
+   }
 
 }

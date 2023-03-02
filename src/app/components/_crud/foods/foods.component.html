@@ -3,25 +3,25 @@
         <div class="card m-auto">
             <h4 class="card-header" #titleIng> Please add a food </h4>
             <div class="card-body">
-                <form [formGroup]="foodForm" (ngSubmit)="onSubmit()">
+                <form [formGroup]="foodForm" (ngSubmit)="onSubmit()" class="d-md-flex align-items-center">
     
-                    <div class="form-group">
+                    <div class="form-group mr-1">
                         <label for="foodName"> Food Name </label>
                         <input type="text" class="form-control" #foodname formControlName="name" id="foodName">
                     </div>
     
-                    <div class="form-group">
+                    <div class="form-group mr-1">
                         <label for="foodprice"> Price </label>
                         <input type="text" class="form-control" #foodprice formControlName="price" id="foodprice">
                     </div>
     
-                    <div class="form-group">
+                    <div class="form-group mr-1">
                         <label for="foodDesc"> Decription </label>
                         <input type="text" class="form-control" #foodDesc formControlName="description" id="foodDesc">
                     </div>
     
-                    <div class="form-group">
-                        <p>Category</p>
+                    <div class="form-group mr-1">
+                        <p class="pcat">Category</p>
                         <select class="form-control" #foodCategory formControlName="category">
                             <option value=""></option>
                             <option *ngFor="let foodCategory of foodCat" [ngValue]="foodCategory">
@@ -30,7 +30,7 @@
                         </select>                
                     </div>
     
-                    <button type="submit" class="btn btn-primary mr-2">
+                    <button type="submit" class="btn btn-primary mr-2 savebtn">
                         Save
                     </button>
                 </form>

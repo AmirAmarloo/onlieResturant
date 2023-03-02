@@ -1,3 +1,29 @@
+<header>
+    <nav>
+      <div class="row">
+        <ul class="main-nav">
+          <li><a routerLink="">Home</a></li>
+          <li><a *ngIf="detNo > 3" class="ank" routerLink="/foods">foods</a></li>
+          <li><a *ngIf="detNo > 4" class="ank" routerLink="/users">users</a></li>
+          <li><a class="ank" routerLink="/login">Login</a></li>
+          <li><a *ngIf="detNo > 3" class="ank" routerLink="/takeawaystuff">Takeaway stuff</a></li>
+          <li><a *ngIf="detNo > 3" class="ank" routerLink="/ingredients">Ingredients</a></li>
+          <li><a *ngIf="detNo > -1" class="ank" routerLink="/order">Orders</a></li>
+          <li><a *ngIf="detNo > 1" class="ank" routerLink="/changeOrderToReady">Set orders to ready</a></li>
+          <li><a *ngIf="detNo > 1" class="ank" routerLink="/changeOrderToTakeaway">Set orders to Deliver</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <div class="hero-text-box">
+    <h1>Welcome to our restaurant. <br> We make the difference. </h1>
+    <a href="#" class="btn btn-full" id="order-button" (click)="showOverlay()">MENU & Order</a>
+    <a href="#" class="btn btn-full" id="reserve-button">Table Reservation</a>
+  </div>
+
+  <!-- <app-overlay [ngClass]="overlayStyle"></app-overlay> -->
+  <router-outlet></router-outlet>
 <nav>
     <br>
     <a *ngIf="detNo > 3" class="ank" routerLink="/foods">foods</a>
@@ -9,4 +35,4 @@
     <a *ngIf="detNo > 1" class="ank" routerLink="/changeOrderToReady">Set orders to ready</a>
     <a *ngIf="detNo > 1" class="ank" routerLink="/changeOrderToTakeaway">Set orders to Deliver</a>
 </nav>
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->

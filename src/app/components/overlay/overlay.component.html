@@ -1,0 +1,49 @@
+<!-- The overlay -->
+<div id="myNav" class="overlay">
+
+    <!-- Button to close the overlay navigation -->
+    <a href="javascript:void(0)" class="closebtn" (click)="hideOverlay()">&times; Close </a>
+  
+    <!-- Overlay content -->
+    <div class="overlay-content">
+      <!-- Navigation -->
+      <nav class="navbar navbar-expand-md">
+        <a href="#" class="navbar-brand">
+          <img src="../../../assets/images/m-logo.webp" alt="Logo" style="height: 60px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#landing-page">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="main-nav collapse navbar-collapse" id="landing-page">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a routerLink="order" class="nav-link d-flex align-items-center">
+                <mat-icon class="fa-solid fa-utensils pt-1" aria-hidden="false" aria-label="info icon" matTooltip="Menu"></mat-icon>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a routerLink="info" class="nav-link d-flex align-items-center">
+                <mat-icon class="fa-solid fa-circle-info pt-1" aria-hidden="false" aria-label="info icon" matTooltip="Info"></mat-icon>
+              </a>
+            </li>
+            <li class="nav-item">
+                <a routerLink="cart" class="cart nav-link d-flex align-items-center">
+                  <!-- <i class="fa badge" style="font-size:26px" value=5>&#xf07a;</i> -->
+                  <mat-icon class="fa-solid fa-cart-shopping pt-1" aria-hidden="false" aria-label="cart shopping icon" matTooltip="Order">
+                    <span *ngIf="number"  class="badge badge-notify" >{{number.text}}
+                    </span>
+                  </mat-icon>
+                </a>
+          </ul>
+        </div>
+      </nav>
+  
+      <!-- Overlay Content -->
+      <!-- MENU -->
+      <!-- <app-menu></app-menu> -->
+      <router-outlet></router-outlet>
+  
+    </div>
+  
+  </div>

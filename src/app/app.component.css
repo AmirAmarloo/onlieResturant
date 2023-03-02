@@ -1,3 +1,58 @@
-.ank{
+/* .ank{
     margin: 20px;
+} */
+
+app-overlay {
+    display: none;
 }
+  
+.overlay-hide {
+    display: none;
+}
+.overlay-show {
+    display: block;
+}
+
+/*************
+    BUTTON
+**************/
+#order-button.btn:link,
+#order-button.btn:visited,
+#reserve-button.btn:link,
+#reserve-button.btn:visited {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 300;
+    border-radius: 200px;
+    padding: 15px 30px;
+    transition: background-color 0.3s, border 0.3s, color 0.3s;
+}
+
+#order-button:link,
+#order-button:visited {
+    background-color: #d47420;
+    border: 1px solid #533de1;
+}
+
+#order-button:hover,
+#order-button:active {
+    background-color: #ff8316;
+    border: 1px solid #ff8316;
+}
+
+#reserve-button:link,
+#reserve-button:visited {
+    background-color: #533de1;
+    border: 1px solid #e67e23;
+}
+
+#reserve-button:hover,
+#reserve-button:active {
+    background-color: #624aff;
+    border: 1px solid #624aff;
+}
+
+.btn {
+    color: #fff;
+}
+  

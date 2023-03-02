@@ -1,0 +1,108 @@
+/* The Overlay (background) */
+.overlay {
+    height: 80%;
+    width: 80%;
+    position: fixed;
+    z-index: 1;
+    left: 10%;
+    top: 10%;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden; /* No horizontal scroll */
+    transition: 0.5s;
+}
+  
+/* The content inside the overlay */
+.overlay-content {
+color: rgb(190, 215, 207);
+position: relative;
+top: 15%;
+width: 100%;
+text-align: center;
+margin-top: 30px;
+}
+  
+/* The navigation links inside the overlay */
+.overlay a {
+padding: 8px;
+text-decoration: none;
+font-size: 36px;
+color: #818181;
+display: block; /* Instead of inline */
+transition: 0.3s; /* On hover (color) */
+}
+
+.overlay a:hover, .overlay a:focus {
+color: #f1f1f1;
+}
+
+/* Position of the close button */
+.overlay .closebtn {
+position: absolute;
+top: 80px;
+right: 2px;
+font-size: 16px;
+background-color: rgba(0,0,0, 0.8);
+}
+  
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position of the close button*/
+@media screen and (max-height: 450px) {
+.overlay a {font-size: 20px}
+.overlay .closebtn {
+    font-size: 35px;
+    top: 25px;
+    right: 35px;
+}
+}
+  
+nav div.navbar-collapse {
+line-height: 2;
+}
+nav.navbar {
+position: fixed;
+top: 10%;
+max-width: 80%;
+width: 100%;
+}
+
+.main-nav ul li:hover,li:active{
+    border: 1px solid #f1f1f1;
+    transition: 0.1s; 
+}
+.main-nav ul li {
+        border: solid 1px #818181;
+        width: 50px;
+        text-transform: uppercase;
+        display: flex;
+        justify-content: center;
+}
+.main-nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 90%;
+    border-bottom: 2px solid transparent;
+    padding: 7px 0;
+    transition: 0.3s;
+}
+.mat-icon{
+    font-size: 14px;
+}
+.fa-cart-shopping{
+    background: red;
+    position: relative;
+    top: 15px;
+    right: 5px;
+    vertical-align: top;
+}
+
+
+  .icon{
+    font-size: 20px;
+  }
+  .badge-notify{
+    background:red;
+    position:relative;
+    top: -8px;
+    left: -4px;
+  }
+  

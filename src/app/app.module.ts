@@ -35,6 +35,9 @@ import { MatSortModule } from '@angular/material/sort';
 import {A11yModule} from '@angular/cdk/a11y';
 import { DeleteUserDialogComponent } from './components/_dialog/delete-user-dialog/delete-user-dialog.component';
 import { OrderTakeawyComponent } from './components/order-takeawy/order-takeawy.component';
+import { OverlayComponent } from './components/overlay/overlay.component';
+import {MatIcon, MatIconModule} from '@angular/material/icon';
+import { InfoComponent } from './components/overlay/info/info.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +61,8 @@ import { OrderTakeawyComponent } from './components/order-takeawy/order-takeawy.
     OrderReadyComponent,
     DeleteUserDialogComponent,
     OrderTakeawyComponent,
+    OverlayComponent,
+    InfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +81,7 @@ import { OrderTakeawyComponent } from './components/order-takeawy/order-takeawy.
     MatPaginatorModule,
     MatSortModule,
     A11yModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

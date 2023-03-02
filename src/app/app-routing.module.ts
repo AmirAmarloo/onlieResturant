@@ -12,6 +12,7 @@ import { LoginComponent } from './components/user/login/login.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { UserComponent } from './components/user/user.component';
 import { OrderTakeawyComponent } from './components/order-takeawy/order-takeawy.component';
+import { InfoComponent } from './components/overlay/info/info.component';
 
 const routes: Routes = [
   {
@@ -49,11 +50,15 @@ const routes: Routes = [
   {
     path: 'order',
     component: OrdersComponent, 
+  },  
+  {
+    path: 'info',
+    component: InfoComponent, 
   },          
   {
     path: '',
-    component: OrdersComponent, 
-  },          
+    redirectTo: '/home',
+    pathMatch: 'full' },      
   {
     path: 'changeOrderToReady',
     component: OrderReadyComponent, canActivate:[AuthGuard]

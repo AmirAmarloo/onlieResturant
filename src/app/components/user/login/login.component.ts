@@ -13,6 +13,7 @@ export class LoginComponent {
 
   loginForm! : FormGroup;
   canLogin: string = '';
+  comment: string = '';
   
   constructor(private fb: FormBuilder, 
               private route: Router, 
@@ -48,6 +49,7 @@ export class LoginComponent {
             let decToken = this.getDecodedAccessToken(token);                         
             this.sendMessage(decToken.category);
             localStorage.setItem('token', token);
+            this.comment = 'successfully loged in!';
           }
           else
           {

@@ -31,7 +31,7 @@ export class OrdersComponent {
   clickedRow: any;
   totalPrice: string = '0';
   orderShowList: OrdersShow[] = [];
-  submitTime: string = '';
+  // submitTime: string = '';
   tsDataSource!: TakeawayStuff[];
   tsId!: number;
   tsQty!: number;
@@ -253,6 +253,7 @@ export class OrdersComponent {
       .afterClosed()
       .subscribe({
         next: (isSubmit) => {
+          let submitTime : string = '';
           if (isSubmit){
             this.orderCart.forEach((e)=>{
               let userid = Number(localStorage.getItem('userId'));
@@ -262,10 +263,10 @@ export class OrdersComponent {
                 complete: () => {
                   this._os.submitOrder(Number(localStorage.getItem('userId'))).subscribe({
                     next: (dta) => {
-                      let submitTimeStr = JSON.stringify(dta);
-                      this.submitTime = submitTimeStr.substring(submitTimeStr.indexOf('[{"result":"')+12, submitTimeStr.indexOf('"}]'));
-                      this.takeaway.value.dateTime = this.submitTime;
-                      this.addTakeaway();
+                      // let submitTimeStr = JSON.stringify(dta);
+                      // this.submitTime = submitTimeStr.substring(submitTimeStr.indexOf('[{"result":"')+12, submitTimeStr.indexOf('"}]'));
+                      submitTime = dta.dateTime;
+                      this.takeaway.value.dateTime = submitTime;
                       this.clearOrder();
                       },
                     error: (err) => {
@@ -285,6 +286,9 @@ export class OrdersComponent {
             }            
           }
         },
+        complete: () => {
+          this.addTakeaway();
+        }
       });
   }
 

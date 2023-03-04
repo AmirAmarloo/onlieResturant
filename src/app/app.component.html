@@ -14,17 +14,20 @@
         </ul>
       </div>
     </nav>
+    <router-outlet></router-outlet>
   </header>
   
-  <div class="hero-text-box">
+  <!-- <div class="hero-text-box">
     <h1>Welcome to our restaurant. <br> We make the difference. </h1>
-    <a href="#" class="btn btn-full" id="order-button" (click)="showOverlay()">MENU & Order</a>
+    <a routerLink="/order" class="btn btn-full" id="order-button" (click)="showOverlay()">MENU & Order</a>
     <a href="#" class="btn btn-full" id="reserve-button">Table Reservation</a>
-  </div>
+  </div> -->
+
 
   <!-- <app-overlay [ngClass]="overlayStyle"></app-overlay> -->
-  <router-outlet></router-outlet>
-<nav>
+  
+
+<!-- <nav>
     <br>
     <a *ngIf="detNo > 3" class="ank" routerLink="/foods">foods</a>
     <a *ngIf="detNo > 4" class="ank" routerLink="/users">users</a>
@@ -34,5 +37,5 @@
     <a *ngIf="detNo > -1" class="ank" routerLink="/order">Orders</a>
     <a *ngIf="detNo > 1" class="ank" routerLink="/changeOrderToReady">Set orders to ready</a>
     <a *ngIf="detNo > 1" class="ank" routerLink="/changeOrderToTakeaway">Set orders to Deliver</a>
-</nav>
+</nav> -->
 <!-- <router-outlet></router-outlet> -->

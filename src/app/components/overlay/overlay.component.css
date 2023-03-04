@@ -64,7 +64,6 @@ top: 10%;
 max-width: 80%;
 width: 100%;
 }
-
 .main-nav ul li:hover,li:active{
     border: 1px solid #f1f1f1;
     transition: 0.1s; 
@@ -94,15 +93,13 @@ width: 100%;
     right: 5px;
     vertical-align: top;
 }
-
-
-  .icon{
-    font-size: 20px;
-  }
-  .badge-notify{
-    background:red;
-    position:relative;
-    top: -8px;
-    left: -4px;
-  }
+.icon{
+font-size: 20px;
+}
+.badge-notify{
+background:red;
+position:relative;
+top: -8px;
+left: -4px;
+}
   

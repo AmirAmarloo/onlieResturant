@@ -10,7 +10,7 @@
                     <p class="totalprice">Total price : {{totalPrice}}  HUF</p>
                 </div>
                 <div class="col ml-5">
-                    <span class="material-symbols-outlined sohppingcart mb-3" matBadge="{{totalOrder}}" [matBadgeHidden]="showBadge"  matBadgeOverlap="true" matBadgeSize="small"  matBadgePosition="after" matBadgeColor="accent">
+                    <span class="material-symbols-outlined sohppingcart mb-3" matBadge="{{totalOrder}}" [matBadgeHidden]="showBadge"  matBadgeOverlap="true" matBadgeSize="small"  matBadgePosition="after" matBadgeColor="accent" (click)="checkOut()">
                         shopping_cart
                     </span>
                 </div>

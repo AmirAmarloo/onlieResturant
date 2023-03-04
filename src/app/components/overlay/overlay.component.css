@@ -7,9 +7,10 @@
     left: 10%;
     top: 10%;
     background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0, 0.9);
+    background-color: rgba(0,0,0, 0.7);
     overflow-x: hidden; /* No horizontal scroll */
     transition: 0.5s;
+    border-radius: 10px;
 }
   
 /* The content inside the overlay */

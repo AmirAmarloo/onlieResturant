@@ -14,7 +14,7 @@
         </ul>
       </div>
     </nav>
-    <router-outlet></router-outlet>
+    
   </header>
   
   <div class="hero-text-box">
@@ -24,7 +24,9 @@
   </div>
 
 
-  <app-overlay [ngClass]="overlayStyle"></app-overlay>
+  <app-overlay [ngClass]="overlayStyle">
+    <router-outlet></router-outlet>
+  </app-overlay>
   
 
 <!-- <nav>

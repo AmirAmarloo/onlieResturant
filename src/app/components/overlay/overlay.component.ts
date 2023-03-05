@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { OverlayService } from 'src/app/_services/overlay.service';
 
@@ -8,10 +8,10 @@ import { OverlayService } from 'src/app/_services/overlay.service';
   styleUrls: ['./overlay.component.css']
 })
 export class OverlayComponent {
- 
+  
   number: any;
   subscription!: Subscription;
-
+  badgQty: string = '5';
 
   constructor(private overlayService:OverlayService) {}
 
@@ -25,4 +25,9 @@ export class OverlayComponent {
   hideOverlay(): void {
     this.overlayService.sendClickEvent();
   }
+
+  getTotalQty(totalQty: any){
+    this.badgQty = totalQty;
+  }
+
 }

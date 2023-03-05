@@ -44,6 +44,11 @@
   font-weight: bolder;
 }
 
+.sohppingcart:hover {
+  cursor: pointer;
+  color: antiquewhite;
+}
+
 .mymat, .mymatc, .mymatcheck, .tsdiv{
   width: 90vh;
   border-radius: 10px;

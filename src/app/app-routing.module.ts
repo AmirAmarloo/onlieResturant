@@ -11,7 +11,7 @@ import { TakeawayStuffComponent } from './components/_crud/takeaway-stuff/takeaw
 import { LoginComponent } from './components/user/login/login.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { UserComponent } from './components/user/user.component';
-import { OrderTakeawyComponent } from './components/order-takeawy/order-takeawy.component';
+import { OrderTakeawyComponent } from './components/changeStatus/order-takeawy/order-takeawy.component';
 import { InfoComponent } from './components/overlay/info/info.component';
 
 const routes: Routes = [

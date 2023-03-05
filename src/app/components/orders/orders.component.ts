@@ -12,6 +12,7 @@ import { DialogDataOrderSubmit, SubmitOrderComponent } from '../_dialog/submit-o
 import { TakeawayStuff } from '../../_models/takeawayStuff';
 import { TakeawayStuffService } from '../../_services/takeaway-stuff.service';
 import { TakeawayService } from '../../_services/takeaway.service';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-orders',

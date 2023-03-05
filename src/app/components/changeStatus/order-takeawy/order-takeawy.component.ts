@@ -24,13 +24,18 @@ export class OrderTakeawyComponent {
 
   getOrders(){
     const tmp = this.tmpOrder || {}
-    tmp.status = 1;
+    tmp.status = 3;
     let lastOg = 1;
     let tmpOrder: Orders[] = [];
+    this.allOrders = [];
     this._os.getOrdersByStatus(tmp).subscribe({
       next: (data) => {this.orderList = data;
         if (this.orderList.length > 0){
           this.isEmpty = this.orderList[0].qty
+        }
+        else
+        {
+          this.isEmpty = 0;
         }
       },
       complete: () => {

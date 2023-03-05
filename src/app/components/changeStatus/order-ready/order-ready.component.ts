@@ -13,6 +13,7 @@ export class OrderReadyComponent {
   tmpOrder!: Orders;
   allOrders: any[][] = [];
   clickedButton: any;
+  isEmpty: number = 0;
 
 
 
@@ -29,10 +30,19 @@ export class OrderReadyComponent {
     tmp.status = 0;
     let lastOg = 1;
     let tmpOrder: Orders[] = [];
+    this.allOrders = [];
     this._os.getOrdersByStatus(tmp).subscribe({
       next: (data) => {
         this.orderList = data;
-        console.log(this.orderList)},
+        if (this.orderList.length > 0){
+          this.isEmpty = this.orderList[0].qty
+        }
+        else
+        {
+          this.isEmpty = 0;
+        }
+        console.log(this.isEmpty);
+      },
       complete: () => {
         for (let i = 0; i < this.orderList.length; i++){
           if (this.orderList[i].orderGroup == lastOg){
@@ -62,6 +72,7 @@ export class OrderReadyComponent {
       complete: () => {
         this.clickedButton = event.target;
         this.removeDiv();
+        this.getOrders();
       },
       error: (err) => {console.log(err)}
     })

@@ -46,14 +46,15 @@ export class OrdersComponent {
               private _ts: TakeawayService){}
 
   ngOnInit(): void {
-    const Role = Number(localStorage.getItem('user-level'))
-    if(Role < 0){
-      this.route.navigate(["/login"]);
-      return;
-    }
+    // const Role = Number(localStorage.getItem('user-level'))
+    // if(Role < 0){
+    //   this.route.navigate(["/login"]);
+    //   return;
+    // }
     this.getOrders(this.orderCat);
     this.getAllTakeawayStuff();
     this.createForm();
+    console.log('sdfsdf');
   }
 
   createForm(){
@@ -253,7 +254,7 @@ export class OrdersComponent {
       .afterClosed()
       .subscribe({
         next: (isSubmit) => {
-          let submitTime : string = '';
+          let cntr = 0;
           if (isSubmit){
             this.orderCart.forEach((e)=>{
               let userid = Number(localStorage.getItem('userId'));
@@ -263,12 +264,13 @@ export class OrdersComponent {
                 complete: () => {
                   this._os.submitOrder(Number(localStorage.getItem('userId'))).subscribe({
                     next: (dta) => {
-                      // let submitTimeStr = JSON.stringify(dta);
-                      // this.submitTime = submitTimeStr.substring(submitTimeStr.indexOf('[{"result":"')+12, submitTimeStr.indexOf('"}]'));
-                      submitTime = dta.dateTime;
-                      this.takeaway.value.dateTime = submitTime;
+                      this.takeaway.value.dateTime = dta.dateTime;
                       this.clearOrder();
+                      if (cntr === 0){
+                        this.addTakeaway();
+                      }
                       },
+                    complete: () => {cntr++;},
                     error: (err) => {
                       console.log(err);
                       hasError = true;
@@ -285,9 +287,6 @@ export class OrdersComponent {
               this._callSwal();
             }            
           }
-        },
-        complete: () => {
-          this.addTakeaway();
         }
       });
   }

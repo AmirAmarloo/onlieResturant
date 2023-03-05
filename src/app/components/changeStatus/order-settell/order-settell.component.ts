@@ -62,7 +62,9 @@ export class OrderSettellComponent {
     tmpOrd.dateTime = ord[0].dateTime;
     tmpOrd.status = 2;
     this._os.changeStatus(tmpOrd).subscribe({
-      next: (data) => {console.log(data)},
+      next: (data) => {
+
+      },
       complete: () => {
         this.clickedButton = event.target;
         this.removeDiv();

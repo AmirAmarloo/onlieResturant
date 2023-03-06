@@ -10,7 +10,7 @@
                     <p class="totalprice">Total price : {{totalPrice}}  HUF</p>
                 </div>
                 <div class="col ml-5">
-                    <span class="material-symbols-outlined sohppingcart mb-3" matBadge="{{totalOrder}}" [matBadgeHidden]="showBadge"  matBadgeOverlap="true" matBadgeSize="small"  matBadgePosition="after" matBadgeColor="accent">
+                    <span class="material-symbols-outlined sohppingcart mb-3" matBadge="{{totalOrder}}" [matBadgeHidden]="showBadge"  matBadgeOverlap="true" matBadgeSize="small"  matBadgePosition="after" matBadgeColor="accent" (click)="checkOut()">
                         shopping_cart
                     </span>
                 </div>
@@ -78,9 +78,7 @@
 <div class="container d-flex align-items-center justify-content-center mt-4   ">
     <div class="row mat-elevation-z8 tsdiv">
         <div class="col-4" >
-            <button class="btn bg-info" style="color: white;" >
-                Takeaway
-            </button>   
+            <p>Takeaway</p>
         </div>
         <div class="col-3 mt-2 mr-4">
             <select name="tsSel" id="tsSelect" #selectList (change)="clickOption(selectList.value)" >
@@ -91,7 +89,7 @@
             </select>
         </div>
         <div class="col-1 mt-2">
-            <label for="qty"> qty </label>
+            <label for="qty"> Qty </label>
         </div>  
         <div class="col-3 mt-1">
             <input type="number"  #qty  id="qty" min="0" max="1000" value="0" size="6" (input)="onSearchChange($event)">

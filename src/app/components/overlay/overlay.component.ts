@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { OrdersService } from 'src/app/_services/orders.service';
 import { OverlayService } from 'src/app/_services/overlay.service';
 
 @Component({
@@ -11,11 +12,14 @@ export class OverlayComponent {
   
   number: any;
   subscription!: Subscription;
-  badgQty: string = '5';
+  selectedQty: any;
 
-  constructor(private overlayService:OverlayService) {}
+  constructor(private overlayService:OverlayService,
+              private _os: OrdersService
+    ) {}
 
   ngOnInit(): void {
+    this._os.currentQty.subscribe(qty => (this.selectedQty= qty));
     // this.subscription = this._menuService.getNumber().subscribe(number => { this.number = number });
   }
   ngOnDestroy(){
@@ -24,10 +28,6 @@ export class OverlayComponent {
 
   hideOverlay(): void {
     this.overlayService.sendClickEvent();
-  }
-
-  getTotalQty(totalQty: any){
-    this.badgQty = totalQty;
   }
 
 }

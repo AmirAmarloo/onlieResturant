@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
@@ -12,7 +12,7 @@ import { DialogDataOrderSubmit, SubmitOrderComponent } from '../_dialog/orders/s
 import { TakeawayStuff } from '../../_models/takeawayStuff';
 import { TakeawayStuffService } from '../../_services/takeaway-stuff.service';
 import { TakeawayService } from '../../_services/takeaway.service';
-import { Output, EventEmitter } from '@angular/core';
+// import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-orders',

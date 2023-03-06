@@ -36,7 +36,7 @@ import {A11yModule} from '@angular/cdk/a11y';
 import { DeleteUserDialogComponent } from './components/_dialog/users/delete-user-dialog/delete-user-dialog.component';
 import { OrderTakeawyComponent } from './components/changeStatus/order-takeawy/order-takeawy.component';
 import { OverlayComponent } from './components/overlay/overlay.component';
-import {MatIcon, MatIconModule} from '@angular/material/icon';
+import { MatIconModule} from '@angular/material/icon';
 import { InfoComponent } from './components/overlay/info/info.component';
 import { OrderSettellComponent } from './components/changeStatus/order-settell/order-settell.component';
 @NgModule({

@@ -13,6 +13,7 @@ import { RegisterComponent } from './components/user/register/register.component
 import { UserComponent } from './components/user/user.component';
 import { OrderTakeawyComponent } from './components/changeStatus/order-takeawy/order-takeawy.component';
 import { InfoComponent } from './components/overlay/info/info.component';
+import { OrderSettellComponent } from './components/changeStatus/order-settell/order-settell.component';
 
 const routes: Routes = [
   {
@@ -66,6 +67,10 @@ const routes: Routes = [
   {
     path: 'changeOrderToTakeaway',
     component: OrderTakeawyComponent, canActivate:[AuthGuard]
+  },          
+  {
+    path: 'settellOrder',
+    component: OrderSettellComponent, canActivate:[AuthGuard]
   },          
 
 ];

@@ -13,8 +13,9 @@
   }
 
   .nothing{
+    color: white;
     text-align: center;
     margin: 10vh;
-    justify-content: center;
+    justify-content: center; 
     width: 50vh;
   }

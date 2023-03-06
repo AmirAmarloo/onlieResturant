@@ -1,1 +1,20 @@
-<p>order-settell works!</p>
+<div class="container"> 
+    <div *ngIf="isEmpty > 0">
+        <div class="card" *ngFor="let row of allOrders" >
+            <div class="row" >
+                <div class="col orderstat"  *ngFor="let item of row; let j=index">
+                    <p #{{item.orderGroup}}>Name: {{item.name}}</p>
+                    <p>Qty: {{item.qty}}</p>
+                </div>
+                <button type="button" class="btn btn-info" (click)="changeToReady(row, $event)"> Sattelled </button>
+            </div>
+        </div>
+    </div>     
+</div>
+<div class="container">
+    <div class="row">
+        <div class="nothing" *ngIf="isEmpty === 0">
+            <h2> Nothing for show</h2>
+        </div>
+    </div>
+</div>

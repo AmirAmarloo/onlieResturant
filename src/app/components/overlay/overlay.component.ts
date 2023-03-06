@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { OrdersService } from 'src/app/_services/orders.service';
 import { OverlayService } from 'src/app/_services/overlay.service';
-import { SubmitOrderComponent } from '../_dialog/submit-order/submit-order.component';
 
 @Component({
   selector: 'app-overlay',
@@ -34,6 +33,6 @@ export class OverlayComponent {
   }
 
   openDialog(){
-    this._dialog.open(SubmitOrderComponent);
+    this._os.openCheckoutFunc();
   }
 }

@@ -14,6 +14,7 @@ import { TakeawayStuffService } from '../../_services/takeaway-stuff.service';
 import { TakeawayService } from '../../_services/takeaway.service';
 // import { Output, EventEmitter } from '@angular/core';
 
+
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -137,6 +138,7 @@ export class OrdersComponent {
     });
     this.totalOrder = cntQty;
     this.totalPrice = prc.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    this._os.changeTotalOrder(this.totalOrder.toString());
     if (cntQty > 0){
       this.showBadge = false;
     }

@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { Orders } from 'src/app/_models/Orders';
+import { Orders } from 'src/app/_models/orders';
 import { OrdersService } from 'src/app/_services/orders.service';
 
 @Component({
-  selector: 'app-order-takeawy',
-  templateUrl: './order-takeawy.component.html',
-  styleUrls: ['./order-takeawy.component.css']
+  selector: 'app-order-settell',
+  templateUrl: './order-settell.component.html',
+  styleUrls: ['./order-settell.component.css']
 })
-export class OrderTakeawyComponent {
+export class OrderSettellComponent {
 
   orderList! : Orders[];
   tmpOrder!: Orders;
@@ -24,13 +24,18 @@ export class OrderTakeawyComponent {
 
   getOrders(){
     const tmp = this.tmpOrder || {}
-    tmp.status = 3;
+    tmp.status = 1;
     let lastOg = 1;
     let tmpOrder: Orders[] = [];
+    this.allOrders = [];
     this._os.getOrdersByStatus(tmp).subscribe({
       next: (data) => {this.orderList = data;
         if (this.orderList.length > 0){
           this.isEmpty = this.orderList[0].qty
+        }
+        else
+        {
+          this.isEmpty = 0;
         }
       },
       complete: () => {
@@ -55,9 +60,11 @@ export class OrderTakeawyComponent {
     const tmpOrd = this.tmpOrder || {}
     tmpOrd.userId = ord[0].userId;
     tmpOrd.dateTime = ord[0].dateTime;
-    tmpOrd.status = 3;
+    tmpOrd.status = 2;
     this._os.changeStatus(tmpOrd).subscribe({
-      next: (data) => {console.log(data)},
+      next: (data) => {
+
+      },
       complete: () => {
         this.clickedButton = event.target;
         this.removeDiv();
@@ -70,5 +77,6 @@ export class OrderTakeawyComponent {
   removeDiv(){
     this.clickedButton.parentElement.parentElement.style.display = "none";
   }  
+
 
 }

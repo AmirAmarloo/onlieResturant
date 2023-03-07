@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Orders } from '../_models/Orders';
+import { Orders } from '../_models/orders';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { OrdersShow } from '../_models/orderShow';
 

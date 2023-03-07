@@ -1,4 +1,4 @@
-import { Component, ElementRef, SimpleChanges, ViewChild } from '@angular/core';
+import { Component} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
@@ -6,12 +6,14 @@ import { Router } from '@angular/router';
 import { OrdersService } from '../../_services/orders.service';
 import { AddFoodComponent, DialogDataOrderShow } from '../_dialog/food/add-food/add-food.component';
 import { OrdersShow } from '../../_models/orderShow';
-import { Orders } from '../../_models/Orders';
-import { CustomerDataComponent, DialogDataUser } from '../_dialog/customer-data/customer-data.component';
-import { DialogDataOrderSubmit, SubmitOrderComponent } from '../_dialog/submit-order/submit-order.component';
+import { Orders } from '../../_models/orders';
+import { CustomerDataComponent, DialogDataUser } from '../_dialog/users/customer-data/customer-data.component';
+import { DialogDataOrderSubmit, SubmitOrderComponent } from '../_dialog/orders/submit-order/submit-order.component';
 import { TakeawayStuff } from '../../_models/takeawayStuff';
 import { TakeawayStuffService } from '../../_services/takeaway-stuff.service';
 import { TakeawayService } from '../../_services/takeaway.service';
+// import { Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-orders',
@@ -41,19 +43,19 @@ export class OrdersComponent {
   constructor(private fb: FormBuilder, 
               private _os : OrdersService, 
               private _dialog: MatDialog,
-              private route: Router,
               private _tss: TakeawayStuffService,
               private _ts: TakeawayService){}
 
   ngOnInit(): void {
-    const Role = Number(localStorage.getItem('user-level'))
-    if(Role < 0){
-      this.route.navigate(["/login"]);
-      return;
-    }
+    // const Role = Number(localStorage.getItem('user-level'))
+    // if(Role < 0){
+    //   this.route.navigate(["/login"]);
+    //   return;
+    // }
     this.getOrders(this.orderCat);
     this.getAllTakeawayStuff();
     this.createForm();
+
 
     // this._os.currentStatus.subscribe(status => (this._co = status))
     this._os.currentStatus.subscribe(status => (this.checkStatus(status)))
@@ -61,6 +63,7 @@ export class OrdersComponent {
 
   checkStatus(status:boolean){
     this.checkOut();
+    
   }
 
   createForm(){
@@ -131,7 +134,6 @@ export class OrdersComponent {
         this.clickedRow.parentElement.parentElement.children[i].style.color = "black"
       }
     }
-
   }
 
   badgeReset(){
@@ -262,7 +264,7 @@ export class OrdersComponent {
       .afterClosed()
       .subscribe({
         next: (isSubmit) => {
-          let submitTime : string = '';
+          let cntr = 0;
           if (isSubmit){
             this.orderCart.forEach((e)=>{
               let userid = Number(localStorage.getItem('userId'));
@@ -272,12 +274,13 @@ export class OrdersComponent {
                 complete: () => {
                   this._os.submitOrder(Number(localStorage.getItem('userId'))).subscribe({
                     next: (dta) => {
-                      // let submitTimeStr = JSON.stringify(dta);
-                      // this.submitTime = submitTimeStr.substring(submitTimeStr.indexOf('[{"result":"')+12, submitTimeStr.indexOf('"}]'));
-                      submitTime = dta.dateTime;
-                      this.takeaway.value.dateTime = submitTime;
+                      this.takeaway.value.dateTime = dta.dateTime;
                       this.clearOrder();
+                      if (cntr === 0){
+                        this.addTakeaway();
+                      }
                       },
+                    complete: () => {cntr++;},
                     error: (err) => {
                       console.log(err);
                       hasError = true;
@@ -294,9 +297,6 @@ export class OrdersComponent {
               this._callSwal();
             }            
           }
-        },
-        complete: () => {
-          this.addTakeaway();
         }
       });
   }

@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { UserCat } from '../../_models/userCat';
-import { DeleteUserDialogComponent, UserDialogData } from '../_dialog/delete-user-dialog/delete-user-dialog.component';
+import { DeleteUserDialogComponent, UserDialogData } from '../_dialog/users/delete-user-dialog/delete-user-dialog.component';
 
 
 

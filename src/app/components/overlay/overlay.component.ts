@@ -12,7 +12,7 @@ import { OverlayService } from 'src/app/_services/overlay.service';
 export class OverlayComponent {
   
   number: any;
-  subscription!: Subscription;
+  // subscription!: Subscription;
   selectedQty: any;
   ocf: boolean = true;
 
@@ -26,7 +26,7 @@ export class OverlayComponent {
     // this.subscription = this._menuService.getNumber().subscribe(number => { this.number = number });
   }
   ngOnDestroy(){
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
   hideOverlay(): void {

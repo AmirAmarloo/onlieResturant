@@ -1,39 +1,35 @@
 import { Component } from '@angular/core';
-import { OrdersService } from 'src/app/_services/orders.service';
 import { Orders } from 'src/app/_models/orders';
+import { OrdersService } from 'src/app/_services/orders.service';
 
 @Component({
-  selector: 'app-order-ready',
-  templateUrl: './order-ready.component.html',
-  styleUrls: ['./order-ready.component.css']
+  selector: 'app-order-takeawy',
+  templateUrl: './order-takeawy.component.html',
+  styleUrls: ['./order-takeawy.component.css']
 })
-export class OrderReadyComponent {
+export class OrderTakeawyComponent {
 
   orderList! : Orders[];
   tmpOrder!: Orders;
+  isEmpty: number = 0;
   allOrders: any[][] = [];
   clickedButton: any;
-  isEmpty: number = 0;
-
-
 
   constructor(private _os: OrdersService){}
 
+  
   ngOnInit(): void {
     this.getOrders();
   }
 
-
-
   getOrders(){
     const tmp = this.tmpOrder || {}
-    tmp.status = 0;
+    tmp.status = 3;
     let lastOg = 1;
     let tmpOrder: Orders[] = [];
     this.allOrders = [];
     this._os.getOrdersByStatus(tmp).subscribe({
-      next: (data) => {
-        this.orderList = data;
+      next: (data) => {this.orderList = data;
         if (this.orderList.length > 0){
           this.isEmpty = this.orderList[0].qty
         }
@@ -41,7 +37,6 @@ export class OrderReadyComponent {
         {
           this.isEmpty = 0;
         }
-        console.log(this.isEmpty);
       },
       complete: () => {
         for (let i = 0; i < this.orderList.length; i++){
@@ -56,7 +51,6 @@ export class OrderReadyComponent {
           }
         }
         this.allOrders.push(tmpOrder);
-        console.log(this.allOrders);
       },
       error: (err) => {console.log(err)}
     })
@@ -66,7 +60,7 @@ export class OrderReadyComponent {
     const tmpOrd = this.tmpOrder || {}
     tmpOrd.userId = ord[0].userId;
     tmpOrd.dateTime = ord[0].dateTime;
-    tmpOrd.status = 1;
+    tmpOrd.status = 3;
     this._os.changeStatus(tmpOrd).subscribe({
       next: (data) => {},
       complete: () => {
@@ -80,7 +74,6 @@ export class OrderReadyComponent {
 
   removeDiv(){
     this.clickedButton.parentElement.parentElement.style.display = "none";
-  }
+  }  
 
 }
-

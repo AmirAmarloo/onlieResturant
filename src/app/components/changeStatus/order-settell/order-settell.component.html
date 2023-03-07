@@ -1,4 +1,4 @@
-<div class="container">      
+<div class="container"> 
     <div *ngIf="isEmpty > 0">
         <div class="card" *ngFor="let row of allOrders" >
             <div class="row" >
@@ -6,10 +6,10 @@
                     <p #{{item.orderGroup}}>Name: {{item.name}}</p>
                     <p>Qty: {{item.qty}}</p>
                 </div>
-                <button type="button" class="btn btn-info" (click)="changeToReady(row, $event)"> Ready </button>
+                <button type="button" class="btn btn-info" (click)="changeToReady(row, $event)"> Sattelled </button>
             </div>
         </div>
-    </div>
+    </div>     
 </div>
 <div class="container">
     <div class="row">

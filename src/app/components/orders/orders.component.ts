@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
@@ -36,7 +36,7 @@ export class OrdersComponent {
   tsId!: number;
   tsQty!: number;
   takeaway! : FormGroup;
-
+  _co: any = false;
 
   constructor(private fb: FormBuilder, 
               private _os : OrdersService, 
@@ -54,6 +54,13 @@ export class OrdersComponent {
     this.getOrders(this.orderCat);
     this.getAllTakeawayStuff();
     this.createForm();
+
+    // this._os.currentStatus.subscribe(status => (this._co = status))
+    this._os.currentStatus.subscribe(status => (this.checkStatus(status)))
+  }
+
+  checkStatus(status:boolean){
+    this.checkOut();
   }
 
   createForm(){
@@ -65,6 +72,7 @@ export class OrdersComponent {
       price: [0, Validators.required],
     })
   }
+
 
   getAllTakeawayStuff(){
     this._tss.getAllTakeawayStuff().subscribe({

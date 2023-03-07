@@ -18,6 +18,11 @@ export class OrdersService {
   private totalOrderSource = new  BehaviorSubject(this.editDataDetails);
   currentQty = this.totalOrderSource.asObservable();
 
+  //checkOutStatus holds the current value and the last value of the ocf
+  public editStatus: any = false;
+  private checkOutStatus = new  BehaviorSubject(this.editStatus);
+  currentStatus = this.checkOutStatus.asObservable();
+
   constructor(private _http: HttpClient) { }
 
   addOrder(data: Orders): Observable<Orders>{
@@ -53,8 +58,8 @@ export class OrdersService {
     this.totalOrderSource.next(totalOrderNumber)
   }
 
-  openCheckoutFunc(){
-
+  openCheckoutFunc(coStatus: any){
+    this.checkOutStatus.next(coStatus);
   }
 
 }

@@ -14,6 +14,7 @@ export class OverlayComponent {
   number: any;
   subscription!: Subscription;
   selectedQty: any;
+  ocf: boolean = true;
 
   constructor(private overlayService:OverlayService,
               private _os: OrdersService,
@@ -33,6 +34,6 @@ export class OverlayComponent {
   }
 
   openDialog(){
-    this._os.openCheckoutFunc();
+    this._os.openCheckoutFunc(this.ocf);
   }
 }

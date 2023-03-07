@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Orders } from 'src/app/_models/Orders';
+import { Orders } from 'src/app/_models/orders';
 
 export interface DialogDataOrder {
   width: string;

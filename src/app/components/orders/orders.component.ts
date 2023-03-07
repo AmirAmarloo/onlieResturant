@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { OrdersService } from '../../_services/orders.service';
 import { AddFoodComponent, DialogDataOrderShow } from '../_dialog/food/add-food/add-food.component';
 import { OrdersShow } from '../../_models/orderShow';
-import { Orders } from '../../_models/Orders';
+import { Orders } from '../../_models/orders';
 import { CustomerDataComponent, DialogDataUser } from '../_dialog/users/customer-data/customer-data.component';
 import { DialogDataOrderSubmit, SubmitOrderComponent } from '../_dialog/orders/submit-order/submit-order.component';
 import { TakeawayStuff } from '../../_models/takeawayStuff';
@@ -43,7 +43,6 @@ export class OrdersComponent {
   constructor(private fb: FormBuilder, 
               private _os : OrdersService, 
               private _dialog: MatDialog,
-              private route: Router,
               private _tss: TakeawayStuffService,
               private _ts: TakeawayService){}
 
@@ -126,7 +125,6 @@ export class OrdersComponent {
         this.clickedRow.parentElement.parentElement.children[i].style.color = "black"
       }
     }
-
   }
 
   badgeReset(){

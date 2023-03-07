@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { OrdersService } from 'src/app/_services/orders.service';
-import { Orders } from 'src/app/_models/Orders';
+import { Orders } from 'src/app/_models/orders';
 
 @Component({
   selector: 'app-order-ready',

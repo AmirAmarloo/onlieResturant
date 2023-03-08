@@ -122,7 +122,7 @@ export class OrdersComponent {
 
   effectRow(qty: number){
     if (qty > 0){
-      this.clickedRow.parentElement.parentElement.style.backgroundColor = "red";
+      this.clickedRow.parentElement.parentElement.style.backgroundColor = "#533de1";
       for (let i = 0; i < this.clickedRow.parentElement.parentElement.children.length; i++){
         this.clickedRow.parentElement.parentElement.children[i].style.color = "white"
       }

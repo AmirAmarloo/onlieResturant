@@ -1,7 +1,39 @@
-/* .ank{
-    margin: 20px;
-} */
+/*************
+    Navbar
+**************/
+.main-nav {
+    padding-left: 10px;
+}
+.main-nav a{
+    font-size: 14px;
+}
 
+/***************
+    HERO BOX
+***************/
+
+.hero-text-box {
+    position: absolute;
+    top: 45%;
+    left: 10%;
+}
+  
+.hero-text-box h1 {
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 900;
+    word-spacing: 4px;
+    letter-spacing: 1px;
+    font-size: 200%;
+    margin-bottom: 10px;
+}
+.hero-text-box a {
+    font-size: 17px;
+}
+
+/*************
+    Overlay
+**************/
 app-overlay {
     display: none;
 }

@@ -1,17 +1,17 @@
 <header>
     <nav>
       <div class="row">
-        <ul class="main-nav">
+        <ul class="main-nav mt-2">
           <li><a routerLink="">Home</a></li>
-          <li><a *ngIf="detNo > 3" class="ank" routerLink="/foods">foods</a></li>
-          <li><a *ngIf="detNo > 4" class="ank" routerLink="/users">users</a></li>
-          <li><a class="ank" routerLink="/login">Login</a></li>
-          <li><a *ngIf="detNo > 3" class="ank" routerLink="/takeawaystuff">Takeaway stuff</a></li>
-          <li><a *ngIf="detNo > 3" class="ank" routerLink="/ingredients">Ingredients</a></li>
-          <li><a *ngIf="detNo > -1" class="ank" routerLink="/order">Orders</a></li>
-          <li><a *ngIf="detNo > 1" class="ank" routerLink="/changeOrderToReady">Set orders to ready</a></li>
-          <li><a *ngIf="detNo > 1" class="ank" routerLink="/settellOrder">Settell Order</a></li>
-          <li><a *ngIf="detNo > 1" class="ank" routerLink="/changeOrderToTakeaway">Set orders to Deliver</a></li>
+          <li><a *ngIf="detNo > 3" routerLink="/foods">foods</a></li>
+          <li><a *ngIf="detNo > 4" routerLink="/users">users</a></li>
+          <li><a routerLink="/login">Login</a></li>
+          <li><a *ngIf="detNo > 3" routerLink="/takeawaystuff">Takeaway stuff</a></li>
+          <li><a *ngIf="detNo > 3" routerLink="/ingredients">Ingredients</a></li>
+          <li><a *ngIf="detNo > -1" routerLink="/order">Orders</a></li>
+          <li><a *ngIf="detNo > 1" routerLink="/changeOrderToReady">Set orders to ready</a></li>
+          <li><a *ngIf="detNo > 1" routerLink="/settellOrder">Settell Order</a></li>
+          <li><a *ngIf="detNo > 1" routerLink="/changeOrderToTakeaway">Set orders to Deliver</a></li>
         </ul>
       </div>
     </nav>
@@ -19,9 +19,10 @@
   </header>
   
   <div class="hero-text-box">
-    <h1>Welcome to our restaurant. <br> We make the difference. </h1>
-    <a routerLink="/order" class="btn btn-full" id="order-button" (click)="showOverlay()">MENU & Order</a>
-    <a href="#" class="btn btn-full" id="reserve-button">Table Reservation</a>
+    <h1>Welcome to our restaurant.</h1>
+    <h1>We make the difference.</h1>
+    <a routerLink="/order" class="btn btn-full mr-2 mt-2" id="order-button" (click)="showOverlay()">MENU & Order</a>
+    <a href="#" class="btn btn-full mt-2" id="reserve-button">Table Reservation</a>
   </div>
 
 

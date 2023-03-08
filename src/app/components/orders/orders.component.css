@@ -7,7 +7,6 @@
   'opsz' 48
 }
 
-
 .openModal:after {
   z-index: 1;
   position: absolute;
@@ -60,4 +59,9 @@
   color: white ;
 }
 
-
+#add_circle{
+  color: darkgreen;
+}
+#remove_circle{
+  color: darkred;
+}

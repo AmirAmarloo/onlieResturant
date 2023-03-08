@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
 import { OrdersService } from 'src/app/_services/orders.service';
 import { OverlayService } from 'src/app/_services/overlay.service';
 
@@ -12,7 +11,7 @@ import { OverlayService } from 'src/app/_services/overlay.service';
 export class OverlayComponent {
   
   number: any;
-  // subscription!: Subscription;
+  showBadge: boolean = true;
   selectedQty: any;
   ocf: boolean = true;
 
@@ -22,9 +21,21 @@ export class OverlayComponent {
     ) {}
 
   ngOnInit(): void {
-    this._os.currentQty.subscribe(qty => (this.selectedQty= qty));
+    this._os.currentQty.subscribe(qty => (this.badgeReset(qty)));
     // this.subscription = this._menuService.getNumber().subscribe(number => { this.number = number });
   }
+
+  badgeReset(qty: number){
+    this.selectedQty = qty
+    if (qty > 0){
+      this.showBadge = false;
+    }
+    else
+    {
+      this.showBadge = true;
+    }
+  }
+
   ngOnDestroy(){
     // this.subscription.unsubscribe();
   }

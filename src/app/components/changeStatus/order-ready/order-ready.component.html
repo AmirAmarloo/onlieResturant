@@ -1,7 +1,8 @@
+<h3> Set Order to READY</h3>
 <div class="container">      
     <div *ngIf="isEmpty > 0">
         <div class="card" *ngFor="let row of allOrders" >
-            <div class="row" >
+            <div class="row justify-content-between w-100" >
                 <div class="col orderstat"  *ngFor="let item of row; let j=index">
                     <p #{{item.orderGroup}}>Name: {{item.name}}</p>
                     <p>Qty: {{item.qty}}</p>
@@ -12,9 +13,9 @@
     </div>
 </div>
 <div class="container">
-    <div class="row">
-        <div class="nothing" *ngIf="isEmpty === 0">
-            <h2> Nothing for show</h2>
+    <div class="row w-100">
+        <div class="nothing w-100" *ngIf="isEmpty === 0">
+            <h2 class="text-center"> Nothing for show</h2>
         </div>
     </div>
 </div>

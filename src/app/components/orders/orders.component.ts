@@ -58,10 +58,10 @@ export class OrdersComponent {
 
 
     // this._os.currentStatus.subscribe(status => (this._co = status))
-    this._os.currentStatus.subscribe(status => (this.checkStatus(status)))
+    this._os.currentStatus.subscribe(status => (this.checkStatus()))
   }
 
-  checkStatus(status:boolean){
+  checkStatus(){
     this.checkOut();
     
   }
@@ -325,7 +325,6 @@ export class OrdersComponent {
   }
 
   clacTakeaway(){
-    console.log(this.tsId);
     if (this.tsId === -1){
       this.takeaway.value.price = 0;
       this.takeaway.value.qty = 0;

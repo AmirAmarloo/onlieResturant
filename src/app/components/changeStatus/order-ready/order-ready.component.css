@@ -19,3 +19,7 @@
   justify-content: center; 
   width: 50vh;
 }
+
+.btn-data{
+  justify-content: space-between;
+}

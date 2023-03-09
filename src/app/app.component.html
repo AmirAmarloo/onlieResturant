@@ -3,15 +3,15 @@
       <div class="row">
         <ul class="main-nav mt-2">
           <li><a routerLink="">Home</a></li>
-          <li><a *ngIf="detNo > 3" routerLink="/foods">foods</a></li>
-          <li><a *ngIf="detNo > 4" routerLink="/users">users</a></li>
-          <li><a routerLink="/login">Login</a></li>
-          <li><a *ngIf="detNo > 3" routerLink="/takeawaystuff">Takeaway stuff</a></li>
-          <li><a *ngIf="detNo > 3" routerLink="/ingredients">Ingredients</a></li>
-          <li><a *ngIf="detNo > -1" routerLink="/order">Orders</a></li>
-          <li><a *ngIf="detNo > 1" routerLink="/changeOrderToReady">Set orders to ready</a></li>
-          <li><a *ngIf="detNo > 1" routerLink="/settellOrder">Settell Order</a></li>
-          <li><a *ngIf="detNo > 1" routerLink="/changeOrderToTakeaway">Set orders to Deliver</a></li>
+          <li><a *ngIf="detNo > 3" routerLink="/foods" (click)="showOverlay()">Foods</a></li>
+          <li><a *ngIf="detNo > 4" routerLink="/users" (click)="showOverlay()">Users</a></li>
+          <li><a routerLink="/login" (click)="showOverlay()">Login</a></li>
+          <li><a *ngIf="detNo > 3" routerLink="/takeawaystuff" (click)="showOverlay()">Takeaway stuff</a></li>
+          <li><a *ngIf="detNo > 3" routerLink="/ingredients" (click)="showOverlay()">Ingredients</a></li>
+          <li><a *ngIf="detNo > -1" routerLink="/order" (click)="showOverlay()">Menu</a></li>
+          <li><a *ngIf="detNo > 1" routerLink="/changeOrderToReady" (click)="showOverlay()">Orders to ready</a></li>
+          <li><a *ngIf="detNo > 1" routerLink="/settellOrder" (click)="showOverlay()">Settell Order</a></li>
+          <li><a *ngIf="detNo > 1" routerLink="/changeOrderToTakeaway" (click)="showOverlay()">Orders to Deliver</a></li>
         </ul>
       </div>
     </nav>

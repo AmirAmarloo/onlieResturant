@@ -1,5 +1,9 @@
-h4 {
+.card-header {
     text-align: center;
+}
+
+.dataTable{
+  color: #F2F2F2;
 }
 
 .user-edit{

@@ -3,6 +3,10 @@ table {
   background-color: #F2F2F2;
 }
 
+.totalprice {
+  color: #F2F2F2;
+}
+
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,

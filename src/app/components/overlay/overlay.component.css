@@ -15,7 +15,7 @@
   
 /* The content inside the overlay */
 .overlay-content {
-color: rgb(190, 215, 207);
+color: rgb(12, 12, 12);
 position: relative;
 top: 15%;
 width: 100%;
@@ -128,4 +128,3 @@ position:relative;
 top: -8px;
 left: -4px;
 }
-  

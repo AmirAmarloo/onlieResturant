@@ -122,14 +122,14 @@ export class OrdersComponent {
 
   effectRow(qty: number){
     if (qty > 0){
-      this.clickedRow.parentElement.parentElement.style.backgroundColor = "#533de1";
+      this.clickedRow.parentElement.parentElement.style.backgroundColor = "#6A8094";
       for (let i = 0; i < this.clickedRow.parentElement.parentElement.children.length; i++){
-        this.clickedRow.parentElement.parentElement.children[i].style.color = "white"
+        this.clickedRow.parentElement.parentElement.children[i].style.color = "#F2F2F2"
       }
     }
     else
     {
-      this.clickedRow.parentElement.parentElement.style.backgroundColor = "white";
+      this.clickedRow.parentElement.parentElement.style.backgroundColor = "#F2F2F2";
       for (let i = 0; i < this.clickedRow.parentElement.parentElement.children.length; i++){
         this.clickedRow.parentElement.parentElement.children[i].style.color = "black"
       }

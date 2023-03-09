@@ -103,9 +103,19 @@ ul.main-nav li a:active {
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 /***************
-    TOOLTIP
+    TABLES
 ***************/
-/* // .tooltip{
-//   font-size: 14px;
-//   background-color: red;
-// } */
+table {
+  background-color: #F2F2F2;
+}
+
+/***************
+    GOOGLE ICONS
+****************/
+/* .material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 40
+} */

@@ -1,3 +1,4 @@
+import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, ROUTES, Routes } from '@angular/router';
 import { AuthGuard } from './_helpers/auth.guard';
@@ -16,6 +17,10 @@ import { InfoComponent } from './components/overlay/info/info.component';
 import { OrderSettellComponent } from './components/changeStatus/order-settell/order-settell.component';
 
 const routes: Routes = [
+  {
+    path: '/home',
+    component: AppComponent, 
+  },
   {
     path: 'foods',
     component: FoodsComponent, canActivate:[AuthGuard]

@@ -1,3 +1,4 @@
+import  Swal  from 'sweetalert2';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -50,6 +51,7 @@ export class LoginComponent {
             this.sendMessage(decToken.category);
             localStorage.setItem('token', token);
             this.comment = 'successfully loged in!';
+            this._callSwal();
           }
           else
           {
@@ -61,6 +63,18 @@ export class LoginComponent {
       error: (err) => {console.log(err)}
     })
   }
+
+  private _callSwal() {
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'successfully logged in',
+      showConfirmButton: false,
+      timer: 2500,
+      width: '340px',
+    });
+    this.route.navigateByUrl('/home');
+  } 
 
   getDecodedAccessToken(token: string) {
     const helper = new JwtHelperService();

@@ -43,7 +43,6 @@ export class SubmitOrderComponent implements OnInit{
       console.log('more than zero');
       twAmnt = this.data.takeawayPrice;
     }
-    console.log('hasTakeaway: ', this.hasTakeaway);
     this.taxAmount = taxAmnt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     this.grossAmount = grossAmnt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     this.takeawayTprice = this.data.takeawayPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

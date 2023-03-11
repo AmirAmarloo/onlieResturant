@@ -14,6 +14,7 @@ import { UserComponent } from './components/user/user.component';
 import { OrderTakeawyComponent } from './components/changeStatus/order-takeawy/order-takeawy.component';
 import { InfoComponent } from './components/overlay/info/info.component';
 import { OrderSettellComponent } from './components/changeStatus/order-settell/order-settell.component';
+import { PeriodicReportComponent } from './components/report/periodic-report/periodic-report.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,10 @@ const routes: Routes = [
   {
     path: 'settellOrder',
     component: OrderSettellComponent, canActivate:[AuthGuard]
+  },          
+  {
+    path: 'detailReport',
+    component: PeriodicReportComponent, canActivate:[AuthGuard]
   },          
 
 ];

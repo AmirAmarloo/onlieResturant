@@ -64,9 +64,6 @@ export class LoginComponent {
 
   getDecodedAccessToken(token: string) {
     const helper = new JwtHelperService();
-    console.log('Ex date: ', helper.getTokenExpirationDate(token));
-
-    console.log(helper.decodeToken(token));
     return  helper.decodeToken(token);
   }
 

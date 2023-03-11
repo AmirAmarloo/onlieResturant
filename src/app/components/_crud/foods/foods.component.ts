@@ -32,27 +32,19 @@ export class FoodsComponent {
   foodCat =  FoodCat; //string[] = ['Food', 'Pizza', 'Drink'];
   public displayedColumns : string[] = ['name', 'price', 'description', 'category', 'edit', 'delete'];
   public dataSource!: MatTableDataSource<Foods>;
-  public jp!: MatPaginator;
+  //public jp!: MatPaginator;
   public allFoods!: Foods[];
   public doEdit: Boolean = false;
 
   constructor(private fb: FormBuilder, 
               private _fs : FoodsService, 
               private _dialog: MatDialog,
-              private route: Router,
               private _liveAnnouncer: LiveAnnouncer,
               ){}
 
 
 
   ngOnInit(): void {
-    // const Role = Number(localStorage.getItem('user-level'))
-    // console.log(Role);
-    // if(Role < 2){
-    //   this.route.navigate(["/login"]);
-    //   return;
-    // }
-
     this.createForm();
     this.getAllFoods();
   }
@@ -114,12 +106,10 @@ export class FoodsComponent {
 
     console.log('doEdit: ', this.doEdit);
     if (this.doEdit===true){
-      console.log('true condition')
       this.editFood();
     }
     else
     {
-      console.log('false condition')
       this.appendFood();
       this.doEdit = false;
 
@@ -130,7 +120,7 @@ export class FoodsComponent {
     this._fs.addFood(this.foodForm.value).subscribe({
       next: (data) => {
       },
-      complete: () => {console.log('Food added.')
+      complete: () => {
         this.foodForm.reset();
         this.getAllFoods();},
         
@@ -146,7 +136,7 @@ export class FoodsComponent {
     this._fs.updateFood(this.foodForm.value).subscribe({
       next: (data) => {
       },
-      complete: () => {console.log('Food updated.')
+      complete: () => {
         this.foodForm.reset();
         this.getAllFoods();
       this.doEdit = false},
@@ -185,14 +175,6 @@ export class FoodsComponent {
     el.scrollIntoView();
     this.doEdit = true;
   }
-
-  // deleteClick(e: Foods){
-  //   this._fs.deleteFoods(e).subscribe({
-  //     next: (data) => {console.log(data)},
-  //     complete: () => {this.getAllFoods()},
-  //     error: (err) => {console.log(err)}
-  //   })
-  // }
 
   public deleteFood(e: Foods) {
     this._fs.deleteFoods(e).subscribe({

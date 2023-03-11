@@ -39,6 +39,7 @@ import { OverlayComponent } from './components/overlay/overlay.component';
 import { MatIconModule} from '@angular/material/icon';
 import { InfoComponent } from './components/overlay/info/info.component';
 import { OrderSettellComponent } from './components/changeStatus/order-settell/order-settell.component';
+import { PeriodicReportComponent } from './components/report/periodic-report/periodic-report.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +66,7 @@ import { OrderSettellComponent } from './components/changeStatus/order-settell/o
     OverlayComponent,
     InfoComponent,
     OrderSettellComponent,
+    PeriodicReportComponent,
   ],
   imports: [
     BrowserModule,

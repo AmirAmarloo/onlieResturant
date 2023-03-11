@@ -4,4 +4,5 @@ export interface OrdersShow{
     price: number;
     qty: number;
     description: string;
+    category: number;
 }

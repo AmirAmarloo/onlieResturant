@@ -73,3 +73,9 @@ table {
 #remove_circle{
   color: darkred;
 }
+
+.txttitle{
+  color: white;
+  text-align: center;
+  margin-left: 50%;
+}

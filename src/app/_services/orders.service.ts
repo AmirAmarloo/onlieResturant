@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Orders } from '../_models/orders';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { OrdersShow } from '../_models/orderShow';
+import { DetailReport } from '../_models/detailReport';
+import { SummarizeData } from '../_models/summarizeDate';
 
 const httpOption = { headers: new HttpHeaders({ 'content-Type' : 'Application/json' , 'responseType': 'text'})};
 
@@ -38,7 +40,7 @@ export class OrdersService {
     return this._http.post<Orders>(`${this.apiURL}/deleteOrder`, data, httpOption);
   }
 
-  getAllOrders(data: number): Observable<OrdersShow[]>{
+  getAllOrders(data: Orders): Observable<OrdersShow[]>{
     return this._http.post<OrdersShow[]>(`${this.apiURL}/getOrders`, data, httpOption)
   }
 
@@ -52,6 +54,14 @@ export class OrdersService {
 
   getOrdersByStatus(data: Orders): Observable<Orders[]>{
    return this._http.post<Orders[]>(`${this.apiURL}/getOrdersByStatus`, data, httpOption);
+  }
+
+  getDetailData(data: Orders): Observable<DetailReport[]>{
+   return this._http.post<DetailReport[]>(`${this.apiURL}/periodicReportDetails`, data, httpOption);
+  }
+
+  getSummarizeData(): Observable<SummarizeData[]>{
+   return this._http.post<SummarizeData[]>(`${this.apiURL}/summarizeByDate`, httpOption);
   }
 
   changeTotalOrder(totalOrderNumber: string) {

@@ -12,6 +12,7 @@ import { DialogDataOrderSubmit, SubmitOrderComponent } from '../_dialog/orders/s
 import { TakeawayStuff } from '../../_models/takeawayStuff';
 import { TakeawayStuffService } from '../../_services/takeaway-stuff.service';
 import { TakeawayService } from '../../_services/takeaway.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 // import { Output, EventEmitter } from '@angular/core';
 
 
@@ -25,6 +26,8 @@ export class OrdersComponent {
 
   public displayedColumns : string[] = ['food', 'price', 'qty', 'description', 'order', 'cancle'];
   public dataSource! : OrdersShow[];
+  public dataSource1! : OrdersShow[];
+  public dataSource2! : OrdersShow[];
   orderCat: number = 1;
   orderCart: Orders [] = [];
   isLoading: boolean = true;
@@ -33,12 +36,15 @@ export class OrdersComponent {
   clickedRow: any;
   totalPrice: string = '0';
   orderShowList: OrdersShow[] = [];
-  // submitTime: string = '';
   tsDataSource!: TakeawayStuff[];
   tsId!: number;
   tsQty!: number;
   takeaway! : FormGroup;
   _co: any = false;
+  tmpOrder!: Orders;
+  token: string = '';
+  userId!: string;
+
 
   constructor(private fb: FormBuilder, 
               private _os : OrdersService, 
@@ -47,23 +53,20 @@ export class OrdersComponent {
               private _ts: TakeawayService){}
 
   ngOnInit(): void {
-    // const Role = Number(localStorage.getItem('user-level'))
-    // if(Role < 0){
-    //   this.route.navigate(["/login"]);
-    //   return;
-    // }
-    this.getOrders(this.orderCat);
+    const tmp = this.tmpOrder || {} 
+    tmp.status = 0;   
+    this.getOrders(tmp);
+    tmp.status = 1;   
+    this.getOrdersPizza(tmp);
+    tmp.status = 2;   
+    this.getOrdersDrink(tmp);
     this.getAllTakeawayStuff();
-    this.createForm();
-
-
-    // this._os.currentStatus.subscribe(status => (this._co = status))
     this._os.currentStatus.subscribe(status => (this.checkStatus()))
+    this.createForm();
   }
 
   checkStatus(){
     this.checkOut();
-    
   }
 
   createForm(){
@@ -76,17 +79,40 @@ export class OrdersComponent {
     })
   }
 
-
   getAllTakeawayStuff(){
     this._tss.getAllTakeawayStuff().subscribe({
       next: (data) => {this.tsDataSource = data}
     })
   }
 
-  getOrders(stat: number){
-    this._os.getAllOrders(0).subscribe({
+  getOrders(stat: Orders){
+    this._os.getAllOrders(stat).subscribe({
       next: (data) => {
         this.dataSource = data;
+      },
+        complete: () => {this.isLoading = false},
+      error: (er) => {
+        console.log(er);
+      }
+    })
+  }
+
+  getOrdersPizza(stat: Orders){
+    this._os.getAllOrders(stat).subscribe({
+      next: (data) => {
+        this.dataSource1 = data;
+      },
+        complete: () => {this.isLoading = false},
+      error: (er) => {
+        console.log(er);
+      }
+    })
+  }
+
+  getOrdersDrink(stat: Orders){
+    this._os.getAllOrders(stat).subscribe({
+      next: (data) => {
+        this.dataSource2 = data;
       },
         complete: () => {this.isLoading = false},
       error: (er) => {
@@ -98,7 +124,7 @@ export class OrdersComponent {
   public deleteOrder() {
   }
 
-  public addOrder(data: Orders){
+  public addOrder(data: Orders, ds: OrdersShow[]){
     var edt = this.getArrayIndexById(this.orderCart, data.foodId);
     if (edt === -1){
       this.orderCart.push(data);
@@ -114,9 +140,9 @@ export class OrdersComponent {
     }
     this.effectRow(data.qty);
     let ix :number = 0;
-    ix = this.getArrayIndexById(this.dataSource, data.foodId);
-    this.dataSource[ix].qty = data.qty;
-    this.dataSource[ix].description = data.description;
+    ix = this.getArrayIndexById(ds, data.foodId);
+    ds[ix].qty = data.qty;
+    ds[ix].description = data.description;
     this.badgeReset();
   }
 
@@ -207,7 +233,15 @@ export class OrdersComponent {
 
               }
               else{
-                this.addOrder(data);
+                if (order.category === 1){
+                  this.addOrder(data, this.dataSource);
+                }
+                if (order.category === 2){
+                  this.addOrder(data, this.dataSource1);
+                }
+                if (order.category === 3){
+                  this.addOrder(data, this.dataSource2);
+                }
                 let edt = this.getArrayIndexById(this.orderShowList, order.foodId);
                 if (edt === -1){
                   this.orderShowList.push(order);
@@ -218,7 +252,7 @@ export class OrdersComponent {
   }  
 
   clickColumn(e: OrdersShow, event: any){
-    this.clickedRow = event.target ;
+    this.clickedRow = event.target;
     this.openAddOrder(e);
   }
 
@@ -228,7 +262,10 @@ export class OrdersComponent {
   }
 
   checkOut(){
-    if (localStorage.getItem('userId') ===null){
+    this.token = localStorage.getItem('token') as string;
+    let decToken = null;
+    decToken = this.getDecodedAccessToken(this.token);
+    if (decToken === null){
       const config: DialogDataUser = {width: '100px'};
       this._dialog
       .open(CustomerDataComponent, {data: config})
@@ -236,6 +273,7 @@ export class OrdersComponent {
       .subscribe({
         next: (registredUserId) => {
           if (registredUserId){
+            this.userId = registredUserId;
             localStorage.setItem('userId', registredUserId);
             this.submitOrder(this.orderShowList);
           }
@@ -245,6 +283,7 @@ export class OrdersComponent {
     }
     else{
       this.submitOrder(this.orderShowList);
+      this.userId = decToken.id;
     }
   }
   
@@ -267,12 +306,11 @@ export class OrdersComponent {
           let cntr = 0;
           if (isSubmit){
             this.orderCart.forEach((e)=>{
-              let userid = Number(localStorage.getItem('userId'));
-              e.userId = userid;
+              e.userId = Number(this.userId);
               this._os.addOrder(e).subscribe({
                 next: (data) => {},
                 complete: () => {
-                  this._os.submitOrder(Number(localStorage.getItem('userId'))).subscribe({
+                  this._os.submitOrder(Number(this.userId)).subscribe({
                     next: (dta) => {
                       this.takeaway.value.dateTime = dta.dateTime;
                       this.clearOrder();
@@ -306,7 +344,9 @@ export class OrdersComponent {
     this.orderShowList =[];
     this.effectRow(0);
     this.badgeReset();
-    this.getOrders(this.orderCat);
+    const tmp = this.tmpOrder || {} 
+    tmp.status = 0;   
+    this.getOrders(tmp);
   }
 
   clickOption(desc : string){
@@ -350,4 +390,9 @@ export class OrdersComponent {
       error: (err) => {console.log('error takeaway; ', err)}
     });    
   }
+
+  getDecodedAccessToken(token: string) {
+    const helper = new JwtHelperService();
+    return  helper.decodeToken(token); 
+  } 
 }

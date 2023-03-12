@@ -1,18 +1,62 @@
 <header>
     <nav>
-      <div class="row">
+      <div class="row m-0 justify-content-center mw-100">
         <ul class="main-nav mt-2">
-          <li><a routerLink="">Home</a></li>
-          <li><a *ngIf="detNo > 3" routerLink="/foods" (click)="showOverlay()">Foods</a></li>
-          <li><a *ngIf="detNo > 4" routerLink="/users" (click)="showOverlay()">Users</a></li>
-          <li><a routerLink="/login" (click)="showOverlay()">Login</a></li>
-          <li><a *ngIf="detNo > 3" routerLink="/takeawaystuff" (click)="showOverlay()">Takeaway stuff</a></li>
-          <li><a *ngIf="detNo > 3" routerLink="/ingredients" (click)="showOverlay()">Ingredients</a></li>
-          <li><a *ngIf="detNo > -1" routerLink="/order" (click)="showOverlay()">Menu</a></li>
-          <li><a *ngIf="detNo > 1" routerLink="/changeOrderToReady" (click)="showOverlay()">Orders to ready</a></li>
-          <li><a *ngIf="detNo > 1" routerLink="/settellOrder" (click)="showOverlay()">Settell Order</a></li>
-          <li><a *ngIf="detNo > 1" routerLink="/changeOrderToTakeaway" (click)="showOverlay()">Orders to Deliver</a></li>
-          <li><a *ngIf="detNo > 4" routerLink="/detailReport" (click)="showOverlay()">Detail sReport</a></li>
+          <li>
+            <a class="button parallelogram" routerLink="">
+              <span class="skew-fix">Home</span>
+            </a>
+          </li>
+          <li>
+            <a class="button parallelogram" *ngIf="detNo > -1" routerLink="/order" (click)="showOverlay()">
+              <span class="skew-fix">Menu</span>
+            </a>
+          </li>
+          <li>
+            <a class="button parallelogram" routerLink="/login" (click)="showOverlay()">
+              <span class="skew-fix">Login</span>
+            </a>
+          </li>
+          <li>
+            <a class="button parallelogram" *ngIf="detNo > 3" routerLink="/foods" (click)="showOverlay()">
+              <span class="skew-fix">Foods</span>
+            </a>
+          </li>
+          <li>
+            <a class="button parallelogram" *ngIf="detNo > 4" routerLink="/users" (click)="showOverlay()">
+              <span class="skew-fix">Users</span>
+            </a>
+          </li>
+          <li>
+            <a class="button parallelogram" *ngIf="detNo > 3" routerLink="/takeawaystuff" (click)="showOverlay()">
+              <span class="skew-fix">Takeaway</span>
+            </a>
+          </li>
+          <li>
+            <a class="button parallelogram" *ngIf="detNo > 3" routerLink="/ingredients" (click)="showOverlay()">
+              <span class="skew-fix">Ingredient</span>
+            </a>
+          </li>
+          <li>
+            <a class="button parallelogram" *ngIf="detNo > 1" routerLink="/changeOrderToReady" (click)="showOverlay()">
+              <span class="skew-fix">To Ready</span>
+            </a>
+          </li>
+          <li>
+            <a class="button parallelogram" *ngIf="detNo > 1" routerLink="/settellOrder" (click)="showOverlay()">
+              <span class="skew-fix">To Settle</span>
+            </a>
+          </li>
+          <li>
+            <a class="button parallelogram" *ngIf="detNo > 1" routerLink="/changeOrderToTakeaway" (click)="showOverlay()">
+              <span class="skew-fix">To Deliver</span>
+            </a>
+          </li>
+          <li>
+            <a class="button parallelogram" *ngIf="detNo > 4" routerLink="/detailReport" (click)="showOverlay()">
+              <span class="skew-fix">Report</span>
+            </a>
+          </li>
         </ul>
       </div>
     </nav>

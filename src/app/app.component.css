@@ -4,8 +4,36 @@
 .main-nav {
     padding-left: 10px;
 }
-.main-nav a{
-    font-size: 14px;
+.main-nav li {
+    margin-right: 1px;
+}
+.main-nav a {
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+}
+.button {
+    background: rgba(45, 45, 45, 0.9);
+    border: solid 2px #261c66;
+    box-shadow:5px 5px 0 rgba(10, 5, 32, 0.5);
+    display:inline-block;
+    padding:.5em 2em;
+    text-decoration:none;
+    margin-right: 1px;
+    width: 125px;
+}
+  
+.button:hover {
+    background: rgb(0, 0, 0, 0.7);
+    border: solid 1px #ff8316;
+    box-shadow:5px 5px 0 rgba(255, 140, 17, 0.3);
+}
+.parallelogram {
+    transform: skew(-20deg);
+}
+.skew-fix {
+    display:inline-block;
+    transform: skew(20deg);
 }
 
 /***************

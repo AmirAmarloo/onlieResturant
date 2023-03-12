@@ -1,7 +1,7 @@
 /* The Overlay (background) */
 .overlay {
     height: 80%;
-    width: 100%;
+    width: 90%;
     position: fixed;
     z-index: 2;
     left: 2%;

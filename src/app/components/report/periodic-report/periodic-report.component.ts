@@ -77,7 +77,7 @@ export class PeriodicReportComponent {
     this._os.getSummarizeData().subscribe({
       next: (data) => {
         this.summarizeData = data;
-      },
+       },
       complete: () => {
         this.dataSourceSum = new MatTableDataSource(this.summarizeData);
         this.dataSourceSum.paginator = this.paginator;

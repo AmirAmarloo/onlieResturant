@@ -27,8 +27,8 @@ export class PeriodicReportComponent {
   foodCat!: any
   public dataSource!: MatTableDataSource<DetailReport>;
   public dataSourceSum!: MatTableDataSource<SummarizeData>;
-  public displayedColumns : string[] = ['id', 'DateTime', 'FoodName', 'orderPrice', 'orderQTY', 'takeawayPrice', 'takeawayQty', 'twTotalPrice', 'totalOrderPrice', 'totalPrice', 'grossProfit'];
-  public displayedColumnSum : string[] = ['dateTime', 'category', 'takeawayPrice', 'qty', 'orderPrice', 'grossProfit'];
+  public displayedColumns : string[] = ['id', 'dateTime', 'FoodName', 'orderPrice', 'orderQTY', 'takeawayPrice', 'takeawayQty', 'twTotalPrice', 'totalOrderPrice', 'totalPrice', 'grossProfit'];
+  public displayedColumnSum : string[] = ['dateTime', 'category', 'takeawayPrice', 'QTY', 'orderPrice', 'grossProfit', 'report'];
 
   constructor(private _os: OrdersService, 
     private fb: FormBuilder,
@@ -95,5 +95,23 @@ export class PeriodicReportComponent {
 
   onSubmit(){
     this.getDetaileData(this.PeriodTime.value.pTime);
+  }
+
+  showDetail(selectedDate: string, el: HTMLElement){
+    const tmp = this.tmpOrder || {} 
+    tmp.dateTime = selectedDate;   
+    this._os.getDetailDataByDate(tmp).subscribe({
+      next: (data) => {
+        this.detaileData = data;
+      },
+      complete: () => {
+        this.dataSource = new MatTableDataSource(this.detaileData);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        el.scrollIntoView();
+      },
+      error: (err) => {console.log(err)}
+    })
+
   }
 }

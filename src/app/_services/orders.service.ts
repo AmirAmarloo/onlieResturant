@@ -65,6 +65,10 @@ export class OrdersService {
    return this._http.post<SummarizeData[]>(`${this.apiURL}/summarizeByDate`, httpOption);
   }
 
+  getDetailDataByDate(date: Orders): Observable<DetailReport[]>{
+   return this._http.post<DetailReport[]>(`${this.apiURL}/periodicReportDetailsByDate`, date, httpOption);
+  }
+
   changeTotalOrder(totalOrderNumber: string) {
     this.totalOrderSource.next(totalOrderNumber)
   }

@@ -28,7 +28,7 @@ nav.navbar {
     overflow: hidden;
     position: fixed;
     top: 11%;
-    max-width: 78.9%;
+    max-width: 94%;
     width: 100%;
     background-color: rgba(0,0,0, 0.8);;
 }
@@ -67,7 +67,7 @@ color: #d8dbc8;
 /* When the height of the screen is less than 450 pixels, change the font-size of the links and position of the close button*/
 @media screen and (max-width: 768px) {
     nav.navbar {
-        max-width: 78.7%;
+        max-width: 100%;
     }
     .overlay {
         height: 80%;
@@ -83,7 +83,7 @@ color: #d8dbc8;
 }
 @media screen and (max-width: 992px) {
     nav.navbar {
-        max-width: 78.2%;
+        max-width: 93%;
     }
 }
   

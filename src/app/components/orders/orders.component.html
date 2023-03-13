@@ -1,3 +1,4 @@
+<!-- Total price, sum selected items from the menu -->
 <div *ngIf="isLoading" class="openModal">
 </div>
 
@@ -20,28 +21,29 @@
 </div>
 
 
-
-<h3 class="text txttitle">Food</h3>
+<!-- FOOD MENU -->
+<div class="w-100">
+    <h3 class="menu-heading">Food</h3>
+</div>
 
 <div class="container d-flex align-items-center justify-content-center mat-elevation-z8 mymat">
-    
     <div class="row">
         <div class="col">
             <table mat-table [dataSource]="dataSource" >
                 <ng-container matColumnDef="food"  >
-                    <th mat-header-cell *matHeaderCellDef > Food name. </th>
+                    <th mat-header-cell *matHeaderCellDef > Item </th>
                     <td mat-cell *matCellDef="let element" > {{element.name}} </td>
                 </ng-container>        
                 <ng-container matColumnDef="price">
-                    <th mat-header-cell *matHeaderCellDef> Price. </th>
+                    <th mat-header-cell *matHeaderCellDef> Price </th>
                     <td mat-cell *matCellDef="let element"> {{element.price}} </td>
                 </ng-container>        
                 <ng-container matColumnDef="qty" style="background-color: celColor;">
-                    <th mat-header-cell *matHeaderCellDef > Qty. </th>
+                    <th mat-header-cell *matHeaderCellDef > Qty </th>
                     <td mat-cell #aaaaa *matCellDef="let element"> {{element.qty}} </td>
                 </ng-container>        
                 <ng-container matColumnDef="description">
-                    <th mat-header-cell *matHeaderCellDef> Description. </th>
+                    <th mat-header-cell *matHeaderCellDef> Description </th>
                     <td mat-cell *matCellDef="let element"> {{element.description}} </td>
                 </ng-container>        
                 <ng-container matColumnDef="order">
@@ -69,29 +71,30 @@
         </div>
     </div>
 </div>
-<br>
-<br>
-<h3 class="text txttitle">Pizza</h3>
+
+<!-- PIZZA MENU -->
+<div class="w-100 mt-3">
+    <h3 class="menu-heading">Pizza</h3>
+</div>
 
 <div class="container d-flex align-items-center justify-content-center mat-elevation-z8 mymat">
-    
     <div class="row">
         <div class="col">
             <table mat-table [dataSource]="dataSource1" #foodTable >
                 <ng-container matColumnDef="food"  >
-                    <th mat-header-cell *matHeaderCellDef > Food name. </th>
+                    <th mat-header-cell *matHeaderCellDef > Item </th>
                     <td mat-cell *matCellDef="let element" > {{element.name}} </td>
                 </ng-container>        
                 <ng-container matColumnDef="price">
-                    <th mat-header-cell *matHeaderCellDef> Price. </th>
+                    <th mat-header-cell *matHeaderCellDef> Price </th>
                     <td mat-cell *matCellDef="let element"> {{element.price}} </td>
                 </ng-container>        
                 <ng-container matColumnDef="qty" style="background-color: celColor;">
-                    <th mat-header-cell *matHeaderCellDef > Qty. </th>
+                    <th mat-header-cell *matHeaderCellDef > Qty </th>
                     <td mat-cell #aaaaa *matCellDef="let element"> {{element.qty}} </td>
                 </ng-container>        
                 <ng-container matColumnDef="description">
-                    <th mat-header-cell *matHeaderCellDef> Description. </th>
+                    <th mat-header-cell *matHeaderCellDef> Description </th>
                     <td mat-cell *matCellDef="let element"> {{element.description}} </td>
                 </ng-container>        
                 <ng-container matColumnDef="order">
@@ -120,29 +123,29 @@
     </div>
 </div>
 
-<br>
-<br>
-<h3 class="text txttitle">Drink</h3>
+<!-- DRINK MENU -->
+<div class="w-100 mt-3">
+    <h3 class="menu-heading">Drink</h3>
+</div>
 
 <div class="container d-flex align-items-center justify-content-center mat-elevation-z8 mymat">
-    
     <div class="row">
         <div class="col">
             <table mat-table [dataSource]="dataSource2" #foodTable >
                 <ng-container matColumnDef="food"  >
-                    <th mat-header-cell *matHeaderCellDef > Food name. </th>
+                    <th mat-header-cell *matHeaderCellDef > Item </th>
                     <td mat-cell *matCellDef="let element" > {{element.name}} </td>
                 </ng-container>        
                 <ng-container matColumnDef="price">
-                    <th mat-header-cell *matHeaderCellDef> Price. </th>
+                    <th mat-header-cell *matHeaderCellDef> Price </th>
                     <td mat-cell *matCellDef="let element"> {{element.price}} </td>
                 </ng-container>        
                 <ng-container matColumnDef="qty" style="background-color: celColor;">
-                    <th mat-header-cell *matHeaderCellDef > Qty. </th>
+                    <th mat-header-cell *matHeaderCellDef > Qty </th>
                     <td mat-cell #aaaaa *matCellDef="let element"> {{element.qty}} </td>
                 </ng-container>        
                 <ng-container matColumnDef="description">
-                    <th mat-header-cell *matHeaderCellDef> Description. </th>
+                    <th mat-header-cell *matHeaderCellDef> Description </th>
                     <td mat-cell *matCellDef="let element"> {{element.description}} </td>
                 </ng-container>        
                 <ng-container matColumnDef="order">
@@ -171,12 +174,13 @@
     </div>
 </div>
 
+<!-- TAKEAWAY BOXES -->
 <div class="container d-flex align-items-center justify-content-center mt-4   ">
-    <div class="row mat-elevation-z8 tsdiv">
-        <div class="col-4" >
-            <p>Takeaway</p>
+    <div class="row mat-elevation-z8 tsdiv justify-content-center">
+        <div class="col-3 p-0" >
+            <p class="tkw">Takeaway Box</p>
         </div>
-        <div class="col-3 mt-2 mr-4">
+        <div class="col-2 d-flex p-0" style="height: 23px;">
             <select name="tsSel" id="tsSelect" #selectList (change)="clickOption(selectList.value)" >
                 <option value="null" >    </option>
                 <option  *ngFor="let ts of tsDataSource" [ngValue]="ts.id"  >
@@ -184,10 +188,10 @@
                 </option>                
             </select>
         </div>
-        <div class="col-1 mt-2">
-            <label for="qty"> Qty </label>
+        <div class="col-1">
+            <label for="qty" class="tkw m-0"> Qty </label>
         </div>  
-        <div class="col-3 mt-1">
+        <div class="col-2 d-flex" style="height: 23px;">
             <input type="number"  #qty  id="qty" min="0" max="1000" value="0" size="6" (input)="onSearchChange($event)">
         </div>
     </div>
@@ -201,4 +205,3 @@
         </div>
     </div>
 </div> -->
-<br>

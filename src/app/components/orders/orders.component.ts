@@ -313,6 +313,7 @@ export class OrdersComponent {
                   this._os.submitOrder(Number(this.userId)).subscribe({
                     next: (dta) => {
                       this.takeaway.value.dateTime = dta.dateTime;
+                      this.takeaway.value.userId = Number(this.userId);
                       this.clearOrder();
                       if (cntr === 0){
                         this.addTakeaway();
@@ -385,6 +386,7 @@ export class OrdersComponent {
   }
 
   addTakeaway(){
+    console.log(this.takeaway.value);
     this._ts.addTakeaway(this.takeaway.value).subscribe({
       next: (dta) => {},
       error: (err) => {console.log('error takeaway; ', err)}

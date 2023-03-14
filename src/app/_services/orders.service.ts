@@ -1,10 +1,11 @@
+import { Orders } from '../_models/orders';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Orders } from '../_models/orders';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { OrdersShow } from '../_models/orderShow';
 import { DetailReport } from '../_models/detailReport';
 import { SummarizeData } from '../_models/summarizeDate';
+
 
 const httpOption = { headers: new HttpHeaders({ 'content-Type' : 'Application/json' , 'responseType': 'text'})};
 

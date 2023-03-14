@@ -15,10 +15,18 @@
     width: 100% !important;
     /* height: 100% !important; */
   }
+/* ---------- */
+/*   CONTENT  */
+/* ---------- */
   .info-title {
     font-size: 18px;
+    color: aliceblue;
   }
   .info-content {
     font-size: 16px;
+    color: aliceblue;
+  }
+  .info-content table {
+    background-color: transparent;
   }
   

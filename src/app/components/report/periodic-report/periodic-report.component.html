@@ -1,4 +1,4 @@
-<div class="contaner mt-3">
+<!-- <div class="contaner mt-3">
     <div class="row">
         <div class="card m-auto">
             <h4 class="card-header p-0" #titleIng> Please add a food </h4>
@@ -16,8 +16,12 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
+
+
+<br>
+<br>
 
 <div class="contaner-fluid mt-3">
     <div class="row">
@@ -27,18 +31,83 @@
                 <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Pizza" #input>
             </mat-form-field>
             <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSourceSum" class="mymat m-auto" matSort (matSortChange)="announceSortChange($event)">
+                    <ng-container matColumnDef="dateTime">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by DateTime"> Date Time. </th>
+                        <td mat-cell *matCellDef="let element"> {{element.dateTime}} </td>
+                    </ng-container>        
+                    <ng-container matColumnDef="category">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by category"> category. </th>
+                        <td mat-cell *matCellDef="let element"> {{foodCat[element.category-1]}} </td>
+                    </ng-container>                        
+                    <ng-container matColumnDef="takeawayPrice">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Takeaway Price"> Takeaway Price. </th>
+                        <td mat-cell *matCellDef="let element"> {{element.takeawayPrice}} </td>
+                    </ng-container>                        
+                    <ng-container matColumnDef="QTY">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by QTY"> QTY. </th>
+                        <td mat-cell *matCellDef="let element"> {{element.QTY}} </td>
+                    </ng-container>                        
+                    <ng-container matColumnDef="orderPrice">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Order Price"> Order Price. </th>
+                        <td mat-cell *matCellDef="let element"> {{element.orderPrice}} </td>
+                    </ng-container>                        
+                    <ng-container matColumnDef="grossProfit">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Total Gross Profit"> Total Gross Profit. </th>
+                        <td mat-cell *matCellDef="let element"> {{element.grossProfit}} </td>
+                    </ng-container> 
+                    <ng-container matColumnDef="report">
+                        <th mat-header-cell *matHeaderCellDef>Reprt</th>
+                        <td mat-cell *matCellDef="let element">
+                          <span
+                            class="material-icons"
+                            style="cursor: pointer"
+                            (click)="showDetail(element.dateTime, detailDiv)"
+                          >
+                            report
+                          </span>
+                          
+                        </td>
+                    </ng-container>                                           
+                    <tr mat-header-row *matHeaderRowDef="displayedColumnSum" ></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnSum;" class="rowrow"></tr>   
+                    
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                    </tr>
+                </table>
+                <mat-paginator class="pagin" [pageSizeOptions]="[10, 20, 30]" aria-label="Select page of users"></mat-paginator>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<div class="contaner-fluid mt-3">
+    <div class="row">
+        <div class="w-180 m-auto">
+            <mat-form-field>
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Pizza" #input>
+            </mat-form-field>
+            <div class="mat-elevation-z8" #detailDiv>
                 <table mat-table [dataSource]="dataSource" class="mymat m-auto" matSort (matSortChange)="announceSortChange($event)">
                     <ng-container matColumnDef="id" >
                         <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id"> Id. </th>
                         <td mat-cell *matCellDef="let element" > {{element.id}} </td>
                     </ng-container>        
-                    <ng-container matColumnDef="DateTime">
+                    <ng-container matColumnDef="dateTime">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by DateTime"> Date Time. </th>
-                        <td mat-cell *matCellDef="let element"> {{element.DateTime}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.dateTime}} </td>
                     </ng-container>        
-                    <ng-container matColumnDef="FoodName">
+                    <ng-container matColumnDef="foodName">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Food Name"> Food Name. </th>
-                        <td mat-cell *matCellDef="let element"> {{element.FoodName}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.foodName}} </td>
+                    </ng-container>                        
+                    <ng-container matColumnDef="category">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Category"> Category. </th>
+                        <td mat-cell *matCellDef="let element"> {{foodCat[element.category-1]}} </td>
                     </ng-container>                        
                     <ng-container matColumnDef="orderPrice">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Order Price"> Order Price. </th>
@@ -75,7 +144,6 @@
                     <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="rowrow"></tr>   
                     
-                    <!-- Row shown when there is no matching data. -->
                     <tr class="mat-row" *matNoDataRow>
                         <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
                     </tr>
@@ -85,55 +153,3 @@
         </div>
     </div>
 </div>
-<br>
-<br>
-
-<div class="contaner-fluid mt-3">
-    <div class="row">
-        <div class="w-180 m-auto">
-            <mat-form-field>
-                <mat-label>Filter</mat-label>
-                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Pizza" #input>
-            </mat-form-field>
-            <div class="mat-elevation-z8">
-                <table mat-table [dataSource]="dataSourceSum" class="mymat m-auto" matSort (matSortChange)="announceSortChange($event)">
-                    <ng-container matColumnDef="dateTime">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by DateTime"> Date Time. </th>
-                        <td mat-cell *matCellDef="let element"> {{element.dateTime}} </td>
-                    </ng-container>        
-                    <ng-container matColumnDef="category">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by category"> category. </th>
-                        <td mat-cell *matCellDef="let element"> {{foodCat[element.category-1]}} </td>
-                    </ng-container>                        
-                    <ng-container matColumnDef="takeawayPrice">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Takeaway Price"> Takeaway Price. </th>
-                        <td mat-cell *matCellDef="let element"> {{element.takeawayPrice}} </td>
-                    </ng-container>                        
-                    <ng-container matColumnDef="qty">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by QTY"> QTY. </th>
-                        <td mat-cell *matCellDef="let element"> {{element.qty}} </td>
-                    </ng-container>                        
-                    <ng-container matColumnDef="orderPrice">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Order Price"> Order Price. </th>
-                        <td mat-cell *matCellDef="let element"> {{element.orderPrice}} </td>
-                    </ng-container>                        
-                    <ng-container matColumnDef="grossProfit">
-                        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Total Gross Price"> Total Gross Price. </th>
-                        <td mat-cell *matCellDef="let element"> {{element.grossProfit}} </td>
-                    </ng-container>                        
-                    <tr mat-header-row *matHeaderRowDef="displayedColumnSum" ></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumnSum;" class="rowrow"></tr>   
-                    
-                    <!-- Row shown when there is no matching data. -->
-                    <tr class="mat-row" *matNoDataRow>
-                        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-                    </tr>
-                </table>
-                <mat-paginator class="pagin" [pageSizeOptions]="[10, 20, 30]" aria-label="Select page of users"></mat-paginator>
-            </div>
-        </div>
-    </div>
-</div>
-<br>
-<br>
-<br>

@@ -27,7 +27,7 @@ export class PeriodicReportComponent {
   foodCat!: any
   public dataSource!: MatTableDataSource<DetailReport>;
   public dataSourceSum!: MatTableDataSource<SummarizeData>;
-  public displayedColumns : string[] = ['id', 'dateTime', 'category', 'FoodName', 'orderPrice', 'orderQTY', 'takeawayPrice', 'takeawayQty', 'twTotalPrice', 'totalOrderPrice', 'totalPrice', 'grossProfit'];
+  public displayedColumns : string[] = ['id', 'dateTime', 'category', 'foodName', 'orderPrice', 'orderQTY', 'takeawayPrice', 'takeawayQty', 'twTotalPrice', 'totalOrderPrice', 'totalPrice', 'grossProfit'];
   public displayedColumnSum : string[] = ['dateTime', 'takeawayPrice', 'QTY', 'orderPrice', 'grossProfit', 'report'];
 
   constructor(private _os: OrdersService, 

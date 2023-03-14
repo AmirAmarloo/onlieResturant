@@ -24,7 +24,7 @@ export class OrderTakeawyComponent {
 
   getOrders(){
     const tmp = this.tmpOrder || {}
-    tmp.status = 3;
+    tmp.status = 2;
     let lastOg = 1;
     let tmpOrder: Orders[] = [];
     this.allOrders = [];

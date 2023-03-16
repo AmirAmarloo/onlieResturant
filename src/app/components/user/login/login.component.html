@@ -1,47 +1,40 @@
-<div class="container mt-3">
+<div class="container mt-4 d-flex justify-content-center">
     <div class="card">
         <h4 class="card-header">Login</h4>
         <div class="card-body">
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
-                    <label for="email">Username</label>
+                    <label for="email" class="d-flex">Username</label>
                     <input type="text" class="form-control" formControlName="email" id="email">
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password" class="d-flex">Password</label>
                     <input type="password" class="form-control" formControlName="password" id="password">
                 </div>
                 <div class="d-flex align-items-center">
-                    <button type="submit" class="btn btn-primary mr-2">
-                        Login
+                    <button type="submit" class="btn btn-primary">
+                        Sign In
                     </button>
                     <div class="mx-auto comment">
                         <b>{{comment}}</b>
                     </div>
-                </div>
-                <br>
-                <br>
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <p class="CanLogin"> {{canLogin}} </p> 
-                        </div>
-                        <div class="col">
-                            <a routerLink="/resetpassword" class="Forget">Forget password?</a>   
-                        </div>
-                    </div>
+                    <a routerLink="/register" class="btn btn-success">Register</a>
                 </div>
 
-                <a routerLink="/register" class="btn btn-success mr-2">Registe Now</a>
-                
-                
+                <div class="container p-0">
+                    <div class="row mt-2" style="height: 20px;">
+                        <p class="CanLogin"> {{canLogin}}</p> 
+                    </div>
+                    <div class="row justify-content-center">
+                        <a routerLink="/resetpassword" class="forget">Forget password?</a>   
+                    </div>
+                </div>
 
             </form>
         </div>
     </div>
 </div>
 
-<div>
-
+<!-- <div>
     <button (click)="testClick()">test button</button>
-</div>
+</div> -->

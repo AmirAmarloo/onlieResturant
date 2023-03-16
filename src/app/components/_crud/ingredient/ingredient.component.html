@@ -1,28 +1,30 @@
-<div class="contaner mt-3">
+<div class="container">
     <div class="card">
-        <h4 class="card-header"> Ingredients </h4>
-        <div class="card-body">
+        <h4 class="card-header mb-0"> Ingredients </h4>
+        <div class="card-body px-4 py-3">
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
                 <div class="form-group">
-                    <button class="form-control" (click)="foodPickup()"  id="pickFoodBtn">Pick food</button>
+                    <div class="d-flex justify-content-center mb-1">
+                        <button class="form-control" (click)="foodPickup()"  id="pickFoodBtn">Select a food</button>
+                    </div>
                     <input type="text" class="form-control" #pickFood formControlName="foodId" id="foodId" style="display: none;">
                     <input type="text" class="form-control" #pickFoodname readonly>
                 </div>
 
 
                 <div class="form-group">
-                    <label for="materialName"> Ingredient Name </label>
+                    <label for="materialName" class="formLable"> Ingredient Name </label>
                     <input type="text" class="form-control" #matname formControlName="materialName" id="materialName">
                 </div>
 
                 <div class="form-group">
-                    <label for="amount"> Amount </label>
+                    <label for="amount" class="formLable"> Amount </label>
                     <input type="text" class="form-control" #amountel formControlName="amount" id="amount">
                 </div>
 
                 <div class="form-group">
-                    <p>Unit</p>
+                    <p class="formLable">Unit</p>
                     <select class="form-control" #unit formControlName="unit">
                         <option value=""></option>
                         <option *ngFor="let unit of Units" [ngValue]="unit">
@@ -36,14 +38,13 @@
                     <input type="text" class="form-control" #priceel formControlName="price" id="price">
                 </div>
 
-                <button type="submit" class="btn btn-primary mr-2">
-                    Save
+                <button type="submit" class="btn btn-save">
+                    <span class="mb-2">Save</span>
                 </button>
 
             </form>
         </div>
     </div>
-
 </div>
 
 
@@ -59,4 +60,4 @@
       …
     </footer>
    </div>
-  </ng-template>
+</ng-template>

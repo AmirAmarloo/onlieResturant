@@ -2,9 +2,16 @@
     color: red;
 }
 
-.Forget{
-    margin-left: auto;
+.forget{
+    font-size: 13px;
 }
 .comment {
     color: green;
+}
+.card {
+    width: 60%;
+    background-color: #F2F2F2;
+}
+.btn {
+    font-size: 14px;
 }

@@ -17,6 +17,8 @@ import { OrderSettellComponent } from './components/changeStatus/order-settell/o
 import { PeriodicReportComponent } from './components/report/periodic-report/periodic-report.component';
 import { TableDefinitionComponent } from './components/tableReservation/table-definition/table-definition.component';
 import { ReservationDefinitionComponent } from './components/tableReservation/reservation-definition/reservation-definition.component';
+// import { TableDefinitionComponent } from './components/tableReservation/table-definition/table-definition.component';
+// import { ReservationDefinitionComponent } from './components/tableReservation/reservation-definition/reservation-definition.component';
 
 const routes: Routes = [
   {

@@ -6,54 +6,48 @@
   
     <!-- Overlay content -->
     <div class="overlay-content">
+
       <!-- Navbar -->
       <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+
         <!-- Navbar brand -->
         <a href="#" class="navbar-brand">
-          <img src="../../../assets/images/m-logo.webp" alt="Logo" style="height: 60px;">
+          <img src="../../../assets/images/m-logo.webp" alt="Logo" style="height: 40px;">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#landingPage" aria-controls="landingPage" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <span ><i class="fas fa-bars fa-1x"></i></span>
         </button>
-  
-        <div class="main-nav collapse navbar-collapse" id="landingPage">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse main-nav" id="landingPage">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item active mx-auto">
               <a routerLink="order" class="nav-link d-flex align-items-center">
                 <mat-icon class="fa-solid fa-utensils pt-1" aria-hidden="false" aria-label="info icon" matTooltip="Menu"></mat-icon>
               </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item mx-auto">
               <a routerLink="info" class="nav-link d-flex align-items-center">
                 <mat-icon class="fa-solid fa-circle-info pt-1" aria-hidden="false" aria-label="info icon" matTooltip="Info"></mat-icon>
               </a>
             </li>
-            <li class="nav-item">
-              <a routerLink="order">
+            <li class="nav-item mx-auto">
+              <a routerLink="order" class="nav-link">
                 <span class="material-symbols-outlined shoppingcart mb-0 mt-1" matBadge="{{selectedQty}}" matBadgeOverlap="true" matBadgeSize="medium" [matBadgeHidden]="showBadge" matBadgePosition="after" matBadgeColor="warn" (click)="openDialog()">
                   shopping_cart
                 </span>
               </a>
             </li>
-            <!-- <li class="nav-item">
-                <a routerLink="cart" class="cart nav-link d-flex align-items-center">
-                  <mat-icon class="fa-solid fa-cart-shopping pt-1" aria-hidden="false" aria-label="cart shopping icon" matTooltip="Order">
-                    <span *ngIf="number"  class="badge badge-notify" >{{number.text}}
-                    </span>
-                    test 
-                  </mat-icon>
-                </a>
-            </li> -->
           </ul>
         </div>
+         <!-- Collapsible content -->
+
       </nav>
 
-  
-      <!-- Overlay Content -->
-      <!-- MENU -->
-      <!-- <app-menu></app-menu> -->
       <router-outlet></router-outlet>
   
     </div>
+    <!-- Overlay content -->
   
-  </div>
+</div>
+<!-- The overlay -->

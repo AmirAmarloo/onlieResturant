@@ -57,6 +57,16 @@
               <span class="skew-fix">Report</span>
             </a>
           </li>
+          <li>
+            <a class="button parallelogram" *ngIf="detNo > 4" routerLink="/defineTable" (click)="showOverlay()">
+              <span class="skew-fix">Tables</span>
+            </a>
+          </li>
+          <li>
+            <a class="button parallelogram" *ngIf="detNo > 0" routerLink="/defineReservation" (click)="showOverlay()">
+              <span class="skew-fix">Reservation</span>
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -66,8 +76,12 @@
   <div class="hero-text-box">
     <h1>Welcome to our restaurant.</h1>
     <h1>We make the difference.</h1>
-    <a routerLink="/order" class="btn btn-full mr-2 mt-2" id="order-button" (click)="showOverlay()">MENU & Order</a>
-    <a href="#" class="btn btn-full mt-2" id="reserve-button">Table Reservation</a>
+    <a routerLink="/order" class="btn btn-full mr-2 mt-2" id="order-button" (click)="showOverlay()">
+      <span class="skew-fix">MENU & Order</span>
+    </a>
+    <a routerLink="/defineReservation" class="btn btn-full mt-2" id="reserve-button" (click)="showOverlay()">
+      <span class="skew-fix">Table Reservation</span>
+    </a>
   </div>
 
 

@@ -29,10 +29,9 @@ export class FoodsComponent {
 
 
   foodForm! : FormGroup;
-  foodCat =  FoodCat; //string[] = ['Food', 'Pizza', 'Drink'];
+  foodCat =  FoodCat; 
   public displayedColumns : string[] = ['name', 'price', 'description', 'category', 'edit', 'delete'];
   public dataSource!: MatTableDataSource<Foods>;
-  //public jp!: MatPaginator;
   public allFoods!: Foods[];
   public doEdit: Boolean = false;
 
@@ -199,7 +198,7 @@ export class FoodsComponent {
     });
   }  
 
-  public openDeleteDialog(food: Foods) {
+  public openDeleteDialog(food: string, foodData: Foods) {
     const config: DialogData = { width: '840px', food };
     this._dialog
       .open(DeleteFoodDialogComponent, { data: config })
@@ -207,7 +206,7 @@ export class FoodsComponent {
       .subscribe({
         next: (isDeleted) => {
           if (isDeleted === true) {
-            this.deleteFood(food);
+            this.deleteFood(foodData);
           }
         },
       });

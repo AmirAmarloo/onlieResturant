@@ -14,8 +14,7 @@
                             <input type="text" class="form-control" #foodprice formControlName="price" id="foodprice">
                         </div>
         
-        
-                        <button type="submit" class="btn btn-info">
+                        <button type="submit" class="btn btn-save py-0">
                             Save
                         </button>
                     </form>
@@ -42,7 +41,7 @@
                     <td mat-cell *matCellDef="let element">
                       <span
                         class="material-icons"
-                        style="cursor: pointer"
+                        style="cursor: pointer; color: #13602e"
                         (click)="editClick(element, titleIng)"
                       >
                         edit
@@ -55,7 +54,7 @@
                     <td mat-cell *matCellDef="let element">
                       <span
                         class="material-icons"
-                        style="cursor: pointer"
+                        style="cursor: pointer; color: rgb(144, 29, 29)"
                         (click)="openDeleteDialog(element)"
             
                       >

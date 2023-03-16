@@ -1,3 +1,30 @@
-#pickFoodBtn{
-    width: 100px;
+div.container {
+    max-width: 55%;
+}
+#pickFoodBtn {
+    width: 30%;
+    font-size: 15px;
+    background-color: rgb(30, 30, 128);
+    color: #F2F2F2;
+}
+.card {
+    background-color: #F2F2F2;
+}
+.btn-save {
+    height: 38px;
+    width: 90px;
+    font-size: 16px;
+    background-color: forestgreen;
+    color: #F2F2F2;
+    padding: 0px;
+}
+
+@media screen and (max-width: 768px) {
+    #pickFoodBtn {
+        width: 40%;
+        font-size: 12px;
+    }
+    .formLable{
+        font-size: 14px;
+    }
 }

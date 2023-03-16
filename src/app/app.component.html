@@ -66,8 +66,12 @@
   <div class="hero-text-box">
     <h1>Welcome to our restaurant.</h1>
     <h1>We make the difference.</h1>
-    <a routerLink="/order" class="btn btn-full mr-2 mt-2" id="order-button" (click)="showOverlay()">MENU & Order</a>
-    <a href="#" class="btn btn-full mt-2" id="reserve-button">Table Reservation</a>
+    <a routerLink="/order" class="btn btn-full mr-2 mt-2" id="order-button" (click)="showOverlay()">
+      <span class="skew-fix">MENU & Order</span>
+    </a>
+    <a href="#" class="btn btn-full mt-2" id="reserve-button">
+      <span class="skew-fix">Table Reservation</span>
+    </a>
   </div>
 
 

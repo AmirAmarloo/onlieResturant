@@ -40,6 +40,8 @@ import { MatIconModule} from '@angular/material/icon';
 import { InfoComponent } from './components/overlay/info/info.component';
 import { OrderSettellComponent } from './components/changeStatus/order-settell/order-settell.component';
 import { PeriodicReportComponent } from './components/report/periodic-report/periodic-report.component';
+import { TableDefinitionComponent } from './components/tableReservation/table-definition/table-definition.component';
+import { ReservationDefinitionComponent } from './components/tableReservation/reservation-definition/reservation-definition.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +69,8 @@ import { PeriodicReportComponent } from './components/report/periodic-report/per
     InfoComponent,
     OrderSettellComponent,
     PeriodicReportComponent,
+    TableDefinitionComponent,
+    ReservationDefinitionComponent,
   ],
   imports: [
     BrowserModule,

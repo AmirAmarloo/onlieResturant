@@ -15,6 +15,8 @@ import { OrderTakeawyComponent } from './components/changeStatus/order-takeawy/o
 import { InfoComponent } from './components/overlay/info/info.component';
 import { OrderSettellComponent } from './components/changeStatus/order-settell/order-settell.component';
 import { PeriodicReportComponent } from './components/report/periodic-report/periodic-report.component';
+import { TableDefinitionComponent } from './components/tableReservation/table-definition/table-definition.component';
+import { ReservationDefinitionComponent } from './components/tableReservation/reservation-definition/reservation-definition.component';
 
 const routes: Routes = [
   {
@@ -76,6 +78,14 @@ const routes: Routes = [
   {
     path: 'detailReport',
     component: PeriodicReportComponent, canActivate:[AuthGuard]
+  },          
+  {
+    path: 'defineTable',
+    component: TableDefinitionComponent, canActivate:[AuthGuard]
+  },          
+  {
+    path: 'defineReservation',
+    component: ReservationDefinitionComponent, canActivate:[AuthGuard]
   },          
 
 ];

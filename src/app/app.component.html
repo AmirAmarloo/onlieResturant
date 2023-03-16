@@ -57,6 +57,16 @@
               <span class="skew-fix">Report</span>
             </a>
           </li>
+          <li>
+            <a class="button parallelogram" *ngIf="detNo > 4" routerLink="/defineTable" (click)="showOverlay()">
+              <span class="skew-fix">Table Definition</span>
+            </a>
+          </li>
+          <li>
+            <a class="button parallelogram" *ngIf="detNo > 0" routerLink="/defineReservation" (click)="showOverlay()">
+              <span class="skew-fix">Table Reservation</span>
+            </a>
+          </li>
         </ul>
       </div>
     </nav>

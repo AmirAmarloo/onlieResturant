@@ -4,7 +4,7 @@ import { Foods } from 'src/app/_models/foods';
 
 export interface DialogData {
   width: string;
-  food: Foods;
+  food: string;
 }
 
 @Component({

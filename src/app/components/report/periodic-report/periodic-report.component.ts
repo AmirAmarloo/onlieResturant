@@ -42,10 +42,19 @@ export class PeriodicReportComponent {
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+    if ((event.target as HTMLInputElement).id === 'mat-input-0'){
+      this.dataSourceSum.filter = filterValue.trim().toLowerCase();
+  
+      if (this.dataSourceSum.paginator) {
+        this.dataSourceSum.paginator.firstPage();
+      }
+    }
+    if ((event.target as HTMLInputElement).id === 'mat-input-1'){
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+  
+      if (this.dataSource.paginator) {
+        this.dataSource.paginator.firstPage();
+      }
     }
   }
 
@@ -56,6 +65,7 @@ export class PeriodicReportComponent {
       this._liveAnnouncer.announce('Sorting cleared');
     }
   }
+
 
   getDetaileData(stat: number){
     const tmp = this.tmpOrder || {} 

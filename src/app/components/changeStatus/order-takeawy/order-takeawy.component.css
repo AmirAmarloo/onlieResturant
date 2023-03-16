@@ -9,16 +9,17 @@ h3{
     transition: 0.3s;
     margin: 2vh;
     text-align: center;
-  }
-  
-  .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  }
-
-  .nothing{
-    color: white;
-    text-align: center;
-    margin: 10vh;
-    justify-content: center; 
-    width: 50vh;
-  }
+}
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.nothing{
+  color: white;
+  text-align: center;
+  margin: 10vh;
+  justify-content: center; 
+  width: 50vh;
+}
+.btn-info {
+  background-color: rgb(30, 30, 128);
+}

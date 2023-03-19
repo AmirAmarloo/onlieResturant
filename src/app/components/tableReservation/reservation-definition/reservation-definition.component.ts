@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BookTable } from 'src/app/_models/bookTable';
-import { ReservationDef } from 'src/app/_models/reservationDef';
 import { TableDef } from 'src/app/_models/tableDef';
 import { ReservationDefinationService } from 'src/app/_services/reservation-defination.service';
 import { TableDefinitionService } from 'src/app/_services/table-definition.service';

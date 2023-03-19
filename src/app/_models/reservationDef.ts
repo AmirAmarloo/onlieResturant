@@ -4,4 +4,5 @@ export interface ReservationDef{
     timeDate: string;
     userId: number;
     qty: number;
+    result: string;
 } 

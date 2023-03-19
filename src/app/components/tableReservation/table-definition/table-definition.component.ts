@@ -24,7 +24,7 @@ export class TableDefinitionComponent {
   
   tableForm! : FormGroup;
   doEdit : boolean = false;
-  public displayedColumns : string[] = ['tableNo', 'qty', 'edit', 'delete'];
+  public displayedColumns : string[] = ['tableNo', 'qty', 'relatedTable', 'edit', 'delete'];
   public dataSource!: MatTableDataSource<TableDef>;
   public allTables!: TableDef[];
 
@@ -38,32 +38,16 @@ export class TableDefinitionComponent {
       this.createForm();
       this.getAllTables();
     }
-  
-    applyFilter(event: Event) {
-      const filterValue = (event.target as HTMLInputElement).value;
-      this.dataSource.filter = filterValue.trim().toLowerCase();
-  
-      if (this.dataSource.paginator) {
-        this.dataSource.paginator.firstPage();
-      }
-    }
-  
-    announceSortChange(sortState: Sort) {
-      if (sortState.direction) {
-        this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-      } else {
-        this._liveAnnouncer.announce('Sorting cleared');
-      }
-    }
-  
 
     createForm(){
       this.tableForm = this.fb.group({
         id: [0, Validators.required],
         tableNo: [0, Validators.required],
         qty: [0, Validators.required],
+        relatedTable: [0, Validators.required],
       })
     }
+
 
     getAllTables(){
       this._tds.getAllTables().subscribe({
@@ -182,4 +166,21 @@ export class TableDefinitionComponent {
           });
       }  
       
-}
+      applyFilter(event: Event) {
+        const filterValue = (event.target as HTMLInputElement).value;
+        this.dataSource.filter = filterValue.trim().toLowerCase();
+    
+        if (this.dataSource.paginator) {
+          this.dataSource.paginator.firstPage();
+        }
+      }
+    
+      announceSortChange(sortState: Sort) {
+        if (sortState.direction) {
+          this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
+        } else {
+          this._liveAnnouncer.announce('Sorting cleared');
+        }
+      }
+      
+  }

@@ -15,6 +15,11 @@
                         <input type="text" class="form-control" #qty formControlName="qty" id="qty">
                     </div>
             
+                    <div class="form-group mr-1">
+                        <label for="relatedTable"> Related Table </label>
+                        <input type="text" class="form-control" formControlName="relatedTable" id="relatedTable">
+                    </div>
+            
                     <button type="submit" class="btn btn-primary mr-2 savebtn">
                         Save
                     </button>
@@ -40,6 +45,10 @@
                     <ng-container matColumnDef="qty">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by qty"> QTY. </th>
                         <td mat-cell *matCellDef="let element"> {{element.qty}} </td>
+                    </ng-container>        
+                    <ng-container matColumnDef="relatedTable">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by relatedTable"> Related Table. </th>
+                        <td mat-cell *matCellDef="let element"> {{element.relatedTable}} </td>
                     </ng-container>        
                     <ng-container matColumnDef="edit">
                         <th mat-header-cell *matHeaderCellDef>Edit</th>
